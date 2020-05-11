@@ -1,5 +1,7 @@
 #include <stdio.h>
-/*Criar um algoritmo que leia os limites inferior e superior de um intervalo e imprima todos os números inteiros pares no intervalo aberto e o somatório desses números. Suponha que os números digitados sejam crescentes. */
+/*Criar um algoritmo que leia os limites inferior e superior de um intervalo e imprima todos os 
+números inteiros pares no intervalo aberto e o somatório desses números. 
+Suponha que os números digitados sejam crescentes. */
 
 int main(void) {
   int i, min=0, max, mem, soma=0;
