@@ -6,7 +6,7 @@
 */
 
 int main(void) {
-    int idade, nhomens=0, nmulheres=0, sexismo=0, maiorhomens, menorhomens; maiormulheres, menormulheres;
+    int idade, nhomens=0, nmulheres=0, sexismo=0, maiorhomens=0, menorhomens=maiorhomens, maiormulheres=0, menormulheres=maiormulheres;
     float salario, somahomens=0, somamulheres=0;
     char sexo;
  
@@ -22,6 +22,7 @@ int main(void) {
             scanf(" %c", &sexo);
             printf("Por fim, insira o salario: \n");
             scanf("%f", &salario);
+            printf("\n");
         
             switch (sexo) {
                 case 'm':
@@ -39,30 +40,26 @@ int main(void) {
                     nmulheres++;
                     somamulheres = somamulheres + salario;
                     if (idade > maiormulheres)
-                        maiormulher = idade;
-                    if (idade < menormulher)
-                        menormulher = idade;
+                        maiormulheres = idade;
+                    if (idade < menormulheres)
+                        menormulheres = idade;
                     if (salario < 100)
                         sexismo++;
                 break; 
 
                 default:
-                    printf("O sexo inserido e invalido. Utilize f para feminino, e m para masculino.\n");
+                    printf("O sexo inserido e invalido.\nUtilize f para feminino, e m para masculino.\n");
             } 
         }
     }
-    while (idade >=0);
+    while (idade >= 0);
 
     somahomens = somahomens / nhomens;
     somamulheres = somamulheres / nmulheres;
 
-    printf("Para o grupo do sexo feminino:\nA media dos salarios e igual a %f.\nA maior idade e %d
-     anos.\nA menor e de %d anos.\nO numero de mulheres que recebem menos de 100 reais e de %d.\n\n
-     Para o grupo do sexo masculino:\nA media dos salarios e igual a %f.\nA menor idade e igual a %d.
-     \nA maior e igual a %d.", somamulheres, maiormulheres, menormulheres, sexismo, somahomens, menorhomens,
-     maiorhomens);
+    printf("\nPara o grupo do sexo feminino:\nA media dos salarios e igual a %.2f.\nA maior idade e %d anos.\nA menor e de %d anos.\nO numero de mulheres que recebem menos de 100 reais e de %d.\n\nPara o grupo do sexo masculino:\nA media dos salarios e igual a %.2f.\nA menor idade e igual a %d.\nA maior e igual a %d.", somamulheres, maiormulheres, menormulheres, sexismo, somahomens, menorhomens, maiorhomens);
 
-    //estrutura basica:
-    //media salarios, maior salario, menor salario, sexismo, 
-    //media, menor sal, maior sal, 
+  //como calcular a menor das idades? se idade e menor que o que?
+  //nao consigo pensar em algo alem da gambiarra :(
+  //eu poderia inicializar a idade no inicio, e ja iguala-la a menor antes de entrar na estrutura de repeticao, mas isso nao seria nada elegante.
 }
