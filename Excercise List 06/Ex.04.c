@@ -11,6 +11,6 @@ Com o que sabemos, você vai precisar copiar o código dessa função para o có
 
 int marcaunifei (void);
 
-int main (void) {
+int marcaunifei (void) {
     printf("\nCurso Ciência da Computacao\nDisciplina - Fundamentos de Programação\nUniversidade Federal de Itajubá\n");
 }
