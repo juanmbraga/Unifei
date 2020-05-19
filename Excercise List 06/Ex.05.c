@@ -34,7 +34,7 @@ char conceitoaluno (float media)
         return 'R';
     else if (media >= 5 && media < 7) //se esta entre cinco e sete
         return 'E';
-    else if (media > 7) //se e maior que sete (o exercicio nao afirma que o limite e dez)
+    else if (media >= 7) //se e maior que sete (o exercicio nao afirma que o limite e dez)
         return 'A';
     else 
         return 'X';
