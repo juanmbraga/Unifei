@@ -1,21 +1,22 @@
 #include <stdio.h>
 
 /*
-Questão 5. Faça uma função que recebe a média final de um aluno e retorne o seu conceito, conforme a regra abaixo: 
-o 0 <= media < 5, aluno reprovado (retorne R) 
-o 5 <=  media < 7, aluno em exame (retorne E) 
-o media >= 7, aluno aprovado (retorne A) 
+Questão 6. Faça um programa que utilize as funções dos exercícios 4 e 5 para:  
+ Imprimir o cabeçalho definido na função 4. 
+ Imprimir a matrícula e o conceito de uma lista de alunos cuja média e a matrícula serão digitadas pelo usuário. 
+    Utilize a função do exercício 5. A quantidade de alunos da lista dever ser digitada pelo usuário. 
 */
 
-void marcaunifei (void);
+int marcaunifei (void);
 char conceitoaluno (float);
 
 int main (void) {
-    marcaunifei ();
-
-    float media;
+    int quantidade, matricula, media;
     char conceito;
 
+    marcaunifei (); //imprimir o cabecalho
+
+    do {
     printf("Insira a nota do aluno: ");
     scanf("%f", &media);
 
@@ -25,6 +26,8 @@ int main (void) {
         printf("A media inserida nao e valida.");
     else
         printf("O conceito do aluno e %c.", conceito);
+    }
+    while ();
         
 }
 
@@ -40,6 +43,6 @@ char conceitoaluno (float media)
         return 'X';
 }
 
-void marcaunifei (void) {
-    printf("Curso Ciência da Computacao\nDisciplina - Fundamentos de Programação\nUniversidade Federal de Itajubá\n\n");
+int marcaunifei (void) {
+    printf("\nCurso Ciência da Computacao\nDisciplina - Fundamentos de Programação\nUniversidade Federal de Itajubá\n");
 }

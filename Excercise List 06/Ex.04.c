@@ -9,8 +9,8 @@ Não é necessário implementar a função principal.  Nos demais exercícios, u
 Com o que sabemos, você vai precisar copiar o código dessa função para o código dos respectivos programas.  
 */
 
-int marcaunifei (void);
+void marcaunifei ();
 
-int marcaunifei (void) {
+void marcaunifei () {
     printf("\nCurso Ciência da Computacao\nDisciplina - Fundamentos de Programação\nUniversidade Federal de Itajubá\n");
 }
