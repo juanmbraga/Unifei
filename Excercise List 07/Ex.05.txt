@@ -1,0 +1,23 @@
+5. Qual é o objetivo da variável temp no código abaixo?
+ A variável está sendo usada de forma correta?
+  Em caso negativo, qual é o erro? Caso tenha erra, pense em uma possível solução.
+    
+    int *q, *p, *temp;
+     int i,j;  
+     p = &i;
+     q = &j;
+     *temp = *p;  
+     *p= *q;  
+     *q = *temp 
+
+A variavel ponteiro *temp nao fora inicializada, e portanto tem qualquer valor lixo. 
+Assim, em seu primeiro uso, a variavel que temp estaria apontando para nao existe. 
+(p aponta para i, q aponta para j, mas temp nao aponta para nada ainda)
+
+  I. Parece que o objetivo era de servir como variavel temporaria para trocar os valores de i e j. 
+ II. Nao. Ela nao esta apontando para nenhum lugar, e portanto o programa nao tera o efeito esperado. 
+III. Bastaria criar uma outra variavel, e adicionar seu endereco ao espaco de memoria do ponteiro temp:
+
+int k;
+temp = &k
+(seguir o restante das instrucoes)
