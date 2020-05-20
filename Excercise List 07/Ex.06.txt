@@ -1,0 +1,15 @@
+6. 
+Quais os valores impressos no código abaixo?
+Compile e execute esse código e verifique se você acertou?
+Caso tenha errado, tente dar uma justificativa.
+
+int main(){     
+    int i = 5, j = 3, *p, *q;     
+    p = &i;     
+    q = &j;
+    printf("%d  %d \n", *p, (*p)++ + *q); 
+} 
+
+  I. 5  9 (nova linha)
+ II. Errei. 
+III. Por alguma razao, o valor da variavel a que o ponteiro p referencia, nao e acrescido de 1. 
