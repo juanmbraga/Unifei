@@ -16,7 +16,7 @@
 
  a) true
  b) 6 - 3 = 3 (*p = aponta para i e *q = aponta para j)
- c) pode sero endereco da variavel que p esta apontando, ou seja, endereco de i. 
- d) 3 - 6/(3)+7 = -3/10 = -0.3
- e) i++ -> 4
+  c) pode sero endereco da variavel que p esta apontando, ou seja, endereco de i. 
+  d) 3 - 6/(3)+7 = -3/10 = -0.3
+  e) i++ -> 4
 

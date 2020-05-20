@@ -1,0 +1,21 @@
+4. Se i e j são variáveis inteiras e p e q ponteiros para int, 
+quais das seguintes expressões de atribuição são ilegais?
+
+a) p = &i 
+b) *q = &j 
+    c) p = &*&i 
+d) i = (*&)j; 
+e) i = *&j 
+    f) i = *&*&j 
+g) q = *p 
+    h) i = (*p)++ + *q 
+
+R.:
+a) legal
+b) ilegal, o endereco do ponteiro j sera convertido em um valor int (que nao tem caracteres suficientes)
+    c) legal? tlavez o resultado seja o endereco de ilegais
+d) ilegal
+e) legal
+    f) parece ser legal
+g) legal
+    h) preciso estudar maid
