@@ -1,0 +1,11 @@
+2. Qual é a maneira correta de referenciar (acessar o valor de) num, 
+assumindo que o endereço de num foi atribuído ao ponteiro indica:
+
+a) *indica 
+b) int *indica 
+c) indica 
+
+R.:
+(a) *indica
+
+ 
