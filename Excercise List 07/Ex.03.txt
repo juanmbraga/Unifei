@@ -9,6 +9,6 @@ int main() {
 R.:
 4094
 7
-? (rodando o programa o valor imprimido foi 5)
+5
 15
-? (rodando o programa o valor imprimido foi 9)
+9

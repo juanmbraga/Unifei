@@ -12,15 +12,16 @@ g) q = *p
 
 R.:
 a) legal
-b) ilegal, o endereco do ponteiro j sera convertido em um valor int (que nao tem caracteres suficientes)
-c) se p for um ponteiro, e tiver sido declarado do mesmo tipo que i, entao e legal. 
+b) ilegal, o endereco do ponteiro j sera convertido em um valor int (que nao tem caracteres suficientes).
+c) legal
 d) ilegal
 e) legal
-f) parece ser legal. De fato, usando em trecho de Stephen Prata, 
+f) parece ser legal. De fato, usando um trecho de Stephen Prata, 
         "When followed by a pointer name or an address, * 
         gives the value stored at the pointed-to address."
     (*&j) equivale a variavel que esta no endereco de j, que e j, entao adicionando
     o *& antes do equivalente de j, apenas dira para apontar para o endereco de j. Assim, 
     essa operacao equivaleria a i=j. 
 g) legal
-    h) preciso estudar maid
+h) Sim, e legal, por mais confuso que seja. 
+

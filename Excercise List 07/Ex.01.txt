@@ -10,7 +10,7 @@
  b) *p - *q 
  c) **&p 
    d) 3 - *p/(*q)+7 
-   e) (*p)++
+  e) (*p)++
 
  R.:
 
@@ -18,5 +18,5 @@
  b) 6 - 3 = 3 (*p = aponta para i e *q = aponta para j)
  c) e o endereco da variavel que p esta apontando, ou seja, endereco de i. 
   d) 3 - 6/(3)+7 = -3/10 = -0.3
-  e) i++ -> 4
+e) i++ -> 4
 
