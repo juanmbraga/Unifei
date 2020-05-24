@@ -16,18 +16,17 @@ Obs.: 1 <= N <= 100000
 int collatz (int a);
 
 int main () {
-    int i=0, num;
+    int i, num;
     printf("Insira um numero qualquer: ");
     scanf("%d", &num);
 
     if (num >= 1 && num <= 100000) {
 
-        for (i=0; num==1; i++){
+        for (i=0; num != 1; i++){
             num = collatz (num);
         }
-        
+
         printf ("O numero de operacoes necessarias e igual a %d.", i);
-        printf("%d", num);
     }
     else
     printf("Numero nao permitido, deve estar entre 1 e 100000.");    

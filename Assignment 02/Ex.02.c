@@ -9,8 +9,8 @@ Use a função no programa principal considerando três valores digitados pelo u
 
 //ate onde eu saiba nao ha como uma funcao retornar mais de um valor. Sera que por "retornar" a professora diz imprimir?
 
-int order (int a, int b, int c);
+int int order (int a, int b, int c);
 
-int order (a,b,c) {
-
+int int order (a,b,c) {
+    
 }
