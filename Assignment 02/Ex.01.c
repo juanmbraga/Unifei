@@ -16,7 +16,9 @@ Obs.: 1 <= N <= 100000
 int collatz (int a);
 
 int main () {
+
     int i, num;
+
     printf("Insira um numero qualquer: ");
     scanf("%d", &num);
 
@@ -31,6 +33,7 @@ int main () {
     else
     printf("Numero nao permitido, deve estar entre 1 e 100000.");    
 }
+
 
 int collatz (int a) {
     if (a % 2 == 0)
