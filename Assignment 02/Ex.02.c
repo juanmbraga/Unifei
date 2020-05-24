@@ -7,7 +7,7 @@ Exemplo: Se a = 7, b = 1 e c = 5, a função deve retornar 2 como a posição do
 Use a função no programa principal considerando três valores digitados pelo usuário.
 */
 
-//Segundo o que pude ler de funcoes (Stephen Prata), funcoes nao sao capazes de "retornar" mais de um valor. 
+//Segundo o que pude ler de funcoes (Stephen Prata), elas nao sao capazes de literalmente "retornar" mais de um valor. 
 //"a função deve retornar" aqui pode ser tomado como "imprimir", ou algo que abra a possibilidade do uso de ponteiros como saida.
 //aparentemente usar ponteiros nao e possivel, visto que o enunciado solicita explicitamente que a entrada seja de apenas tres inteiros.
 
