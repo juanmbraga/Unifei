@@ -85,3 +85,34 @@ f) O valor de x na função param do Código 3 foi alterado, explique porque est
     O valor foi alterado pois a variavel fora declarada fora das funcoes, e portanto pode ser alterada tanto na funcao
     main quanto na param. 
 */
+
+
+/*
+//Código 4
+#include<stdio.h>
+#include<stdlib.h>
+
+int x=20;
+
+int param(){
+    x = x + 10;
+    return x;
+}
+
+int main(){
+    int x,y;
+    printf("Digite um numero: ");
+    scanf(" %d", &x);
+    y = param();
+    printf("\nO valor de y e %d \n", y);
+    printf("\nO valor de x e %d \n", x);  
+    system("pause");
+}
+
+g) Supondo que seja digitado o número 10, quais os valores de x e  y que você espera que sejam impressos no Código 4?
+    O valor de y sera 30, e de x sera 10. A variavel x universal fora declarada de antemao, mas ao criar uma nova 
+    dentro de main, os espacos de memoria foram separados.
+h) O valor de x foi alterado na função param do Código 4, explique porque este valor não foi alterado na função principal.
+    A funcao param alterou o valor de uma variavel universal previamente declarada. Porem, em main foi criada uma nova 
+    variavel privada a respectiva funcao, que por sua vez ficou inalterada. 
+*/
