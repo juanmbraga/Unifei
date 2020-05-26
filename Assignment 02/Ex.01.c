@@ -11,7 +11,9 @@ o valor eventualmente será igual a 1.
 Agora faça um programa que diz o número de vezes que a função é chamada antes que o valor de N seja igual a 1.
 
 Obs.: 1 <= N <= 100000
-*///pode ser possivel fazer com do/while -1
+*/
+
+//todas as interacoes com o usuario foram removidas, visto que o "juiz" da Neps Academy as classificou como "erradas". 
 
 int collatz (int a);
 
@@ -19,7 +21,6 @@ int main () {
 
     int i, num;
 
-    printf("Insira um numero qualquer: ");
     scanf("%d", &num);
 
     if (num >= 1 && num <= 100000) {
@@ -28,10 +29,9 @@ int main () {
             num = collatz (num);
         }
 
-        printf ("O numero de operacoes necessarias e igual a %d.", i);
+        printf ("%d", i);
     }
-    else
-    printf("Numero nao permitido, deve estar entre 1 e 100000.");    
+
 }
 
 
