@@ -24,7 +24,7 @@ int main () {
 
     order (a, b, c, &maior, &menor);
 
-    printf("O maior numero e o %d, e o menor e %d.", maior, menor);
+    printf("A posicao do maior numero e o %d, e a do menor e %d.", maior, menor);
 }
 
 void order (int a, int b, int c, int* maior, int* menor) {
