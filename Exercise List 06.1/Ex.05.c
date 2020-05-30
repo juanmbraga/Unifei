@@ -6,6 +6,7 @@ Se a letra  for  A, calcula  a  média  aritmética  das  notas  do  aluno,  se 
 a  sua  média ponderada (pesos: 5, 3 e 2). 
 Utilize esta função no programa principal para retornar a media ponderada de um aluno.
 */
+
 float media (float a, float b, float c, char tipo);
 
 int main () {

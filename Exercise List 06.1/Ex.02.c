@@ -3,9 +3,11 @@
 positivos e um caractere que deve indicar a operação que deve ser realizada 
 entre os dois números seguindo a ordem com que foram digitados. 
 Retorne o resultado da operação. Caso o  segundo  número  digitado for igual  a  0
-e  a  operação  escolhida  for  a  divisão,a função não deve ser chamada e deve ser 
+e  a  operação  escolhida  for  a  divisão, a função não deve ser chamada e deve ser 
 exibida uma mensagem de erro ao usuário. Utilize a função no programa principal.
 */
+
+//percebo agora que a mensagem de erro deva ser implementada em main, e nao aqui.
 
 float opere (int x, int y, char z) {
     switch (z)
