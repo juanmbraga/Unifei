@@ -9,16 +9,39 @@ Faça uma função que receba, por parâmetro, a altura (alt) e o sexo de uma pe
 
 float amifat (float height, float sex);
 
-float amifat (float height, float sex) {
-    switch (sex)
-        case 'm':
-        case 'M':
-            return (72.7 * height)-58;
-        case 'f':
-        case 'F':
-            return (62.1 * height)-44.7;
-        default:
-            printf("O sexo inserido nao e valido. Utilize m ou f.");
-            return 0;          
+int main () {
+    
+    float height;
+    char sex;
 
+    printf("Calcule o peso ideal.\n(digite um valor menor ou igual a zero para finalizar o programa)");
+    
+
+    do {
+
+        printf("\n\nInsira a altura em metros: ");
+        scanf("%f", &height);
+
+        if (height > 0) {
+
+            printf("Agora, insira o sexo (f ou m): ");
+            scanf(" %c", &sex);
+
+            printf("O peso ideal para a altura e sexo digitados e igual a %f kg.", amifat(height, sex));
+        }
+    }
+    while (height > 0);
+
+    printf("Programa finalizado.");       
+}
+
+float amifat (float height, float sex) {
+
+    if (sex == 'm' || sex == 'M')
+        return (72.7 * height)-58;
+
+    if (sex == 'f' || sex == 'F')
+        return (62.1 * height)-44.7;  
+
+    else return 0;  
 }
