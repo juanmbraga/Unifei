@@ -51,6 +51,7 @@ int main (void) {
     }
     while (control == 0); //As funcoes retornarao 1 por padrao. Caso for definido como zero, o jogo encerra.
 
+    system("clear");
     printf("\nJogo encerrado.\n");
 
     return 0; //programa finalizado
@@ -85,14 +86,15 @@ int start () { // Codigo do jogo
     inicializartabela(matriz); //dar valores zero
     inicializartabelajogo(matrizjogador);
 
-    do {
+    bombasedicas(numbombas, matriz);
 
-        bombasedicas(numbombas, matriz); //numero a definir 
+    do {
 
         system("clear");
 
         printf("\n\t\t\t\t\t   CAMPO MINADO\n\n");
-        imprimirtela(matriz, matrizjogador, 2); //por hora apenas a matriz sera imprimida
+        imprimirtela(matriz, matrizjogador, 1);
+        imprimirtela(matriz, matrizjogador, 2); 
         printf("Escolha a coordenada da casa para revelar: \n");
         
         do {
@@ -120,7 +122,7 @@ int start () { // Codigo do jogo
         }
 
     }
-    while(bomba == 0 || tentativas != 0);
+    while(bomba == 0 && tentativas != 0);
 
     return fimpartida(bomba, tentativas, tempo, matriz);
     //bomba para saber se ganhou ou perdeu; 
@@ -143,7 +145,7 @@ int rules () { //escrever a tela para as regras
 
     //Mostrar como será o tabuleiro de jogo
     inicializartabelajogo(matrizchar); 
-    imprimirtelajogo(matrizchar);
+    imprimirtela (matrizint, matrizchar, 2);
 
     printf("\nAperte qualquer tecla e tecle enter para seguir.\n\t");
 
@@ -155,7 +157,7 @@ int rules () { //escrever a tela para as regras
     printf("Sobre a tabela escondida e como aparecerão as bombas e dicas...");
 
     inicializartabela(matrizint);
-    imprimirtela(matrizint);
+    imprimirtela(matrizint, matrizchar, 1); 
     
     printf("Aperte qualquer tecla para voltar ao menu.");
     
@@ -298,22 +300,22 @@ int ranking () { // Armazena o ranking com nomes dos usuarios usando struct
 int fimpartida (int bomba, int tentativas, int tempo, int matriz[][9]) { //A tela do fim da partida
 
     int input;
-
     //Exibir ranking ?
     //exibir pontuação e/ou tempo
 
     system("clear");
 
     if (bomba != 0) { //perdeu 
-        printf("Que pena!");
-        printf("");
+        printf("\nVocê pisou em uma bomba, que pena!\n"); //idealmente um único printf seria necessário, mas ninguém merece né
+        printf("Seu número de tentativas foi %d, e seu tempo foi de %d.", tentativas, tempo);
+        printf("\n\nConfira a seguir os locais das bombas e das dicas.\n");
     }
     else {            //ganhou
-        printf("Parabéns");
-        printf("");
+        printf("\n\nParabéns! Você conseguiu abrir todas as casas sem pisar em nenhuma bomba!");
+        printf("\n\n Confira a seguir os locais das bombas e das dicas.\n");
     }
 
-    imprimirtela(matriz);
+    imprimirtela(matriz, matriz, 1);
 
     printf("Digite '1' para voltar ao menu principal.\n\n\n");
     printf("Digite '2' para sair.\n\n\n");
