@@ -12,8 +12,7 @@ int inicializartabela (int matriz[][9]);
 int inicializartabelajogo(char matrizjogador[][9]);
 int bombasedicas(int, int matriz[][9]);
 int start ();
-int imprimirtela (int matriz[][9]);
-int imprimirtelajogo(char matriz[][9]);
+int imprimirtela (int matrizint[][9], char matrizchar[][9], int);
 int checarcoordenadas (int, int);
 int ranking ();
 int exibirmenu ();
@@ -47,10 +46,12 @@ int main (void) {
           case 4: return 0;
               break;
 
-          default: control = 1;
+          default: control = 0;
       }
     }
     while (control == 0); //As funcoes retornarao 1 por padrao. Caso for definido como zero, o jogo encerra.
+
+    printf("\nJogo encerrado.\n");
 
     return 0; //programa finalizado
 }
@@ -90,24 +91,32 @@ int start () { // Codigo do jogo
 
         system("clear");
 
-        imprimirtelajogo(matrizjogador); //por hora apenas a matriz sera imprimida
+        printf("\n\t\t\t\t\t   CAMPO MINADO\n\n");
+        imprimirtela(matriz, matrizjogador, 2); //por hora apenas a matriz sera imprimida
         printf("Escolha a coordenada da casa para revelar: \n");
         
         do {
             printf("\nInsira o valor da linha: ");
             scanf ("%d", &linhainput);
-            printf("\nInsira o valor da coluna");
+            printf("Insira o valor da coluna: ");
             scanf ("%d", &colunainput);
         } 
         while (checarcoordenadas(linhainput, colunainput) == 1);
+        //caso usuario digitar coordenadas que ja foram reveladas, ele ira perder uma tentativa e nao podera ganhar.
+
+        if (linhainput == 33 && colunainput == 33)
+          return 1;
 
         tentativas--;
+
+        linhainput--;
+        colunainput--;
 
         if (matriz[linhainput][colunainput] >= 10) //é bomba, perdeu!
             bomba = 1;
         else {
             bomba = 0;
-            matrizjogador[linhainput][colunainput] = matriz[linhainput][colunainput] + 48; //segundo ASCII
+            matrizjogador[linhainput][colunainput] = (matriz[linhainput][colunainput] + 48); //segundo ASCII
         }
 
     }
@@ -223,7 +232,7 @@ int bombasedicas (int numbombas, int matriz[][9]) {
 
 int checarcoordenadas (int x, int y) { // Ver se coordenadas do usuario sao validas
 
-    if (x < 9 && x > 0 && y < 9 && y > 0)
+    if ((x < 10 && x > 0 && y < 10 && y > 0) || (x == 33 && y == 33))
         return 0;
     else 
         return 1;
@@ -232,41 +241,47 @@ int checarcoordenadas (int x, int y) { // Ver se coordenadas do usuario sao vali
 }
 
 
-int imprimirtela (int matriz[][9]) {
+int imprimirtela (int matrizint[][9], char matrizchar[][9], int define) {
     
-    printf("\n\n    1    2    3    4    5    6    7    8    9\n\n");
+    if (define == 1) {
+        printf("\n\n    1    2    3    4    5    6    7    8    9\n\n");
 
-    for (int i=0; i<9; i++ ){
+        for (int i=0; i<9; i++ ){
 
-        printf("%d  ", i+1);
+            printf("%d  ", i+1);
 
-        for (int j=0; j<9; j++ ){
-            printf("|%d|  " , matriz[i][j]);
+            for (int j=0; j<9; j++ ){
+                printf("|%d|  " , matrizint[i][j]);
+            }
+
+            printf("\n\n");
         }
 
-        printf("\n\n");
+        return 0;
     }
 
-    return 0;
-}
+    if (define == 2) {
 
+        printf("\n\n      1     2     3     4     5     6     7     8     9\n\n\n");
 
-int imprimirtelajogo (char matriz[][9]) {
+        for (int i=0; i<9; i++ ){
 
-    printf("\n\n    1    2    3    4    5    6    7    8    9\n\n");
+            printf("%d    ", i+1);
 
-    for (int i=0; i<9; i++ ){
+            for (int j=0; j<9; j++ ){
+                printf("[%c]   " , matrizchar[i][j]);
+            }
 
-        printf("%d  ", i+1);
-
-        for (int j=0; j<9; j++ ){
-            printf("|%c|  " , matriz[i][j]);
+            printf("\n\n\n");
         }
 
-        printf("\n\n");
+        return 0;
     }
+    else {
 
-    return 0;
+        printf("Erro de parâmetro.");
+        return 0;
+    }
 }
 
 
@@ -275,7 +290,7 @@ int ranking () { // Armazena o ranking com nomes dos usuarios usando struct
     system("clear");
 
     printf("qualquercoisa");
-    
+
     return 0;
 }
 
