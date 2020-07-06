@@ -6,7 +6,7 @@
 
 int inicializartabela (int matriz[][9]);
 int inicializartabelajogo(char matrizjogador[][9]);
-int inicializar (int matriz[][9], char matriz[][9], char type)
+int inicializar (int matrizint[][9], char matrizchar[][9], char type);
 int bombasedicas(int, int matriz[][9]);
 int somardicas (int bombai, int bombaj, int matriz[][9]);
 int start ();
@@ -87,8 +87,8 @@ int start () { // Codigo do jogo
     tentativas = ((linha*coluna) - numbombas);
     */
 
-    inicializartabela(matriz);
-    inicializartabelajogo(matrizjogador);
+    inicializar(matriz, NULL, 'd'); //inicializar tabela int
+    inicializar(NULL, matrizjogador, 'c'); //inicializar tabela char
 
     bombasedicas(numbombas, matriz);
 
@@ -190,7 +190,7 @@ int rules () { //Exibir as regras
     printf("\t\t\t\tRegras do Campo Minado\n");    
 
     //Mostrar como será o tabuleiro de jogo
-    inicializartabelajogo(matrizchar); 
+    inicializar( NULL, matrizchar, 'c'); 
     imprimirtela (matrizint, matrizchar, 2);
     printf(" A tabela acima representa um campo minado.\n");
     printf("\n De inicio, todas as casas estarao escondidas,\n cabe a voce escolher as coordenadas daquela que deseja abrir.");
@@ -213,10 +213,9 @@ int rules () { //Exibir as regras
     matrizchar[1][3] = '1';
     matrizchar[1][2] = '1';
     printf("\t\t\t\tRegras do Campo Minado\n");
-    inicializartabela(matrizint);
     imprimirtela(matrizint, matrizchar, 2); 
     printf("Quando ouver uma bomba, as casas adjacentes a sua\n receberao um numero indicando a quantidade de bombas ao seu entorno.");
-    printf("\n\nUse as dicas para se guiar e evitar as bombas.")
+    printf("\n\nUse as dicas para se guiar e evitar as bombas.");
     printf("\n\nA casa de linha 3 e coluna 3 exemplifica o explicado acima.\n");
     printf("\nTecle enter para seguir.");
     getchar();
@@ -234,7 +233,6 @@ int rules () { //Exibir as regras
     matrizchar[3][5] = '1';
     matrizchar[3][4] = '1';
     printf("\t\t\t\tRegras do Campo Minado\n");
-    inicializartabela(matrizint);
     imprimirtela(matrizint, matrizchar, 2); 
     printf("\nQuando houver mais de uma bomba em seu entorno,\na casa mostrara este valor.\n\nIsto pode ser visto na coordenada de linha 4 e coluna 4.\n");
     printf("\nTecle enter para seguir.");
@@ -244,7 +242,6 @@ int rules () { //Exibir as regras
  
     //como vencer ou perder
     printf("\t\t\t\tRegras do Campo Minado\n");
-    inicializartabela(matrizint);
     imprimirtela(matrizint, matrizchar, 2); 
     printf("\nO jogo se encerrara em duas condicoes: \n\n1. quando a casa escolhida conter uma mina (voce perdeu!)\n2. Apos todas as casas terem sido reveladas.\n");
     printf("\nTecle enter para seguir.");
@@ -262,14 +259,14 @@ int rules () { //Exibir as regras
 }
 
 
-int inicializar (int matriz[][9], char matriz[][9], char type) {
+int inicializar (int matrizint[][9], char matrizchar[][9], char type) {
 
     if (type == 'd') {
 
         for (int i=0; i<9; i++ ){
 
             for (int j=0; j<9; j++ ){
-                matriz[i][j]=0;
+                matrizint[i][j]=0;
             }
         }
     }
@@ -279,7 +276,7 @@ int inicializar (int matriz[][9], char matriz[][9], char type) {
         for (int i = 0; i<9; i++) { //inicializar como ?
         
             for (int j=0; j<9; j++) {
-                matrizjogador[i][j] = ' ';
+                matrizchar[i][j] = ' ';
             }
         }
     }
@@ -289,33 +286,6 @@ int inicializar (int matriz[][9], char matriz[][9], char type) {
         printf("Erro de parametro.");
     }
     
-    return 0;
-}
-
-
-int inicializartabela (int matriz[][9]) { // Definir a matriz como zero
-
-    for (int i=0; i<9; i++ ){
-
-        for (int j=0; j<9; j++ ){
-            matriz[i][j]=0;
-        }
-    }
-
-    return 0;
-}
-
-
-int inicializartabelajogo (char matrizjogador[][9]) {
-
-    for (int i = 0; i<9; i++) { //inicializar como ?
-        
-        for (int j=0; j<9; j++) {
-            matrizjogador[i][j] = ' ';
-        }
-        
-    }
-
     return 0;
 }
 
@@ -466,7 +436,7 @@ int fimpartida (int bomba, int tentativas, int tempo, int matriz[][9]) {
 
     printf("Seu tempo foi de %d", tempo);
 
-    imprimirtela(matriz, matriz, 1); //inserir a segunda matriz aqui e irrelevante
+    imprimirtela(matriz, NULL, 1); //inserir a segunda matriz aqui e irrelevante
 
     printf("\nDigite '1' para voltar ao menu principal.\n\n\n");
     printf("Digite '2' para sair.\n\n\n");
