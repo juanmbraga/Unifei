@@ -1,23 +1,21 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
+#include <time.h>
 
-
-/* Este codigo nao tem a intencao de ser funcinal para a segunda entrega*/
-/*Serve apenas para se dar uma nocao da estrutura do trabalho final*/
-//O trabalho final provavelmente nao tera tantas funcoes
-//A questao referente ao relogio parecera mais simples do que era. Mais estudo e necessario.
 
 int inicializartabela (int matriz[][9]);
 int inicializartabelajogo(char matrizjogador[][9]);
+int inicializar (int matriz[][9], char matriz[][9], char type)
 int bombasedicas(int, int matriz[][9]);
+int somardicas (int bombai, int bombaj, int matriz[][9]);
 int start ();
 int imprimirtela (int matrizint[][9], char matrizchar[][9], int);
-int checarcoordenadas (int, int);
 int ranking ();
 int exibirmenu ();
 int fimpartida (int, int, int, int matriz[][9]);
 int rules ();
+  
 
 int main (void) {
 
@@ -37,19 +35,20 @@ int main (void) {
       while (input < 0 && input > 5);
 
       switch (input) {
-          case 1: control = start();
+          case 1: control = start();   //inicio do jogo
               break;
-          case 2: control = rules();
+          case 2: control = rules();   //mostra as regras
               break;
-          case 3: control = ranking();
+          case 3: control = ranking(); //exibe o ranking
               break;
-          case 4: return 0;
+          case 4: control = 1;           //encerra o jogo 
               break;
 
-          default: control = 0;
+          default: control = 0;        //para input errado
       }
+      
     }
-    while (control == 0); //As funcoes retornarao 1 por padrao. Caso for definido como zero, o jogo encerra.
+    while (control == 0); //As funcoes retornam 0 por padrao. Caso elas retornarem 1 o jogo encerra. 
 
     system("clear");
     printf("\nJogo encerrado.\n");
@@ -58,14 +57,14 @@ int main (void) {
 }
 
 
-int exibirmenu () { //A parte grafica do menu principal
+int exibirmenu () { //Exibe a parte grafica do menu principal
 
     printf("Olá, bem vindo ao campo minado!\n\n\n");
     printf("--------------------------------\n\n\n");
-    printf("Digite '1' para iniciar o jogo\n\n\n");
-    printf("Digite '2' para ver as regras de como jogar\n\n\n");
-    printf("Digite '3' para acessar o ranking\n\n\n");
-    printf("Digite '4' para sair\n\n\n");
+    printf(" [1] para iniciar o jogo\n\n\n");
+    printf(" [2] para ver as regras de como jogar\n\n\n");
+    printf(" [3] para acessar o ranking\n\n\n");
+    printf(" [4] para sair\n\n\n");
 
     return 0;
 }
@@ -73,58 +72,109 @@ int exibirmenu () { //A parte grafica do menu principal
 
 int start () { // Codigo do jogo
 
-    int linha=9, coluna=9, matriz[9][9];
-    char matrizjogador[9][9]; 
+    int matriz[9][9];                                  //tabela com os valores de dicas e bombas (oculta)
+    char matrizjogador[9][9];                          //tabela vista pelo usuario
+    int linhainput, colunainput;                       //variaveis de input
+    int bomba, checagem, tentativas=70, numbombas=11;  //variaveis de controle
+    int tempo;                                         //A determinar
 
-    int linhainput, colunainput;
-    int tentativas, numbombas, bomba;  //a definir numero de bombas. Definido temporariamente como 11
-    int tempo; //A determinar
+    /* utilizado caso preferissemos adicionar niveis de dificuldade
+    #include <gambiarra.h>
 
+    int linha, coluna;
+    int/char matriz[linha][coluna];
     numbombas=11;
     tentativas = ((linha*coluna) - numbombas);
+    */
 
-    inicializartabela(matriz); //dar valores zero
+    inicializartabela(matriz);
     inicializartabelajogo(matrizjogador);
 
     bombasedicas(numbombas, matriz);
 
     do {
-
         system("clear");
 
         printf("\n\t\t\t\t\t   CAMPO MINADO\n\n");
-        imprimirtela(matriz, matrizjogador, 1);
+        printf("\n\t\t\t\t\t\t\t\tTentativas restantes: %d.\n", tentativas);
+
+        //remova o comentario para ver a tabela oculta
+        //imprimirtela(matriz, matrizjogador, 1); 
+
         imprimirtela(matriz, matrizjogador, 2); 
-        printf("Escolha a coordenada da casa para revelar: \n");
+        printf("Escolha a coordenada da casa para revelar.\nDigite 33 para voltar ao menu principal.\n_________________________________\n");
         
-        do {
-            printf("\nInsira o valor da linha: ");
+        do { //Foi optado por nao modularizar para o case 33 sair do jogo diretamente.
+
+            printf ("\nInsira o valor da linha: ");
             scanf ("%d", &linhainput);
+
+            switch (linhainput) {
+                case 1:
+                case 2:
+                case 3:
+                case 4:
+                case 5:
+                case 6:
+                case 7:
+                case 8:
+                case 9:
+                    checagem = 0;
+                    break;
+                case 33:
+                    return 0;
+                    break;
+                default:
+                    checagem = 1;
+            }
+
             printf("Insira o valor da coluna: ");
             scanf ("%d", &colunainput);
+
+            switch (colunainput) {
+                case 1:
+                case 2:
+                case 3:
+                case 4:
+                case 5:
+                case 6:
+                case 7:
+                case 8:
+                case 9:
+                    checagem = 0;
+                    break;
+                case 33:
+                    return 0;
+                    break;
+                default:
+                    checagem = 1;
+            }
         } 
-        while (checarcoordenadas(linhainput, colunainput) == 1);
-        //caso usuario digitar coordenadas que ja foram reveladas, ele ira perder uma tentativa e nao podera ganhar.
+        while (checagem == 1);
 
-        if (linhainput == 33 && colunainput == 33)
-          return 1;
-
-        tentativas--;
-
-        linhainput--;
+        //corrigir o input do usuario para vetor multidimensional
+        linhainput--; 
         colunainput--;
 
-        if (matriz[linhainput][colunainput] >= 10) //é bomba, perdeu!
-            bomba = 1;
-        else {
+        if(matrizjogador[linhainput][colunainput] != ' ') //checar se casa ainda nao foi revelada
             bomba = 0;
-            matrizjogador[linhainput][colunainput] = (matriz[linhainput][colunainput] + 48); //segundo ASCII
-        }
 
+        else {
+
+            tentativas--; //casa ainda nao revelada (ok), descontar tentativa 
+
+            if (matriz[linhainput][colunainput] >= 10) //é bomba, perdeu!
+              bomba = 1;
+
+            else {
+              bomba = 0;
+              matrizjogador[linhainput][colunainput] = (matriz[linhainput][colunainput] + 48); //segundo ASCII
+            }
+          }
     }
-    while(bomba == 0 && tentativas != 0);
+    while (bomba == 0 && tentativas != 0);
 
-    return fimpartida(bomba, tentativas, tempo, matriz);
+    return fimpartida (bomba, tentativas, tempo, matriz);
     //bomba para saber se ganhou ou perdeu; 
     //tentativas para ranking; 
     //tempo para ranking; 
@@ -132,38 +182,113 @@ int start () { // Codigo do jogo
 }
 
 
-int rules () { //escrever a tela para as regras
-
+int rules () { //Exibir as regras
     int matrizint[9][9];
     char matrizchar[9][9];
 
     system("clear");
-
-    printf("\t\t\tRegras do Campo Minado\n");
-    printf("A tabela a seguir representa um campo minado.\n");
-    printf("\n instruções...");
+    printf("\t\t\t\tRegras do Campo Minado\n");    
 
     //Mostrar como será o tabuleiro de jogo
     inicializartabelajogo(matrizchar); 
     imprimirtela (matrizint, matrizchar, 2);
-
-    printf("\nAperte qualquer tecla e tecle enter para seguir.\n\t");
-
+    printf(" A tabela acima representa um campo minado.\n");
+    printf("\n De inicio, todas as casas estarao escondidas,\n cabe a voce escolher as coordenadas daquela que deseja abrir.");
+    printf("\n\nTome cuidado, pois se voce acertar uma mina, voce perde!");
+    printf("\n\nAperte qualquer tecla e tecle enter para seguir.\n\t");
     getchar();
     getchar(); //Gambiarra aprovada pelo Monitor©
 
+
     system("clear");
 
-    printf("Sobre a tabela escondida e como aparecerão as bombas e dicas...");
-
+    //explicar como as dicas sao distribuidas
+    matrizchar[2][2] = 'X';
+    matrizchar[1][1] = '1';
+    matrizchar[2][1] = '1';
+    matrizchar[3][1] = '1';
+    matrizchar[3][2] = '1';
+    matrizchar[3][3] = '1';
+    matrizchar[2][3] = '1';
+    matrizchar[1][3] = '1';
+    matrizchar[1][2] = '1';
+    printf("\t\t\t\tRegras do Campo Minado\n");
     inicializartabela(matrizint);
-    imprimirtela(matrizint, matrizchar, 1); 
-    
-    printf("Aperte qualquer tecla para voltar ao menu.");
-    
-    getchar();
+    imprimirtela(matrizint, matrizchar, 2); 
+    printf("Quando ouver uma bomba, as casas adjacentes a sua\n receberao um numero indicando a quantidade de bombas ao seu entorno.");
+    printf("\n\nUse as dicas para se guiar e evitar as bombas.")
+    printf("\n\nA casa de linha 3 e coluna 3 exemplifica o explicado acima.\n");
+    printf("\nTecle enter para seguir.");
     getchar();
 
+    system("clear");
+
+    //mais sobre dicas
+    matrizchar[4][4] = 'X';
+    matrizchar[5][3] = '1';
+    matrizchar[3][3] = '2';
+    matrizchar[4][3] = '1';
+    matrizchar[5][4] = '1';
+    matrizchar[5][5] = '1';
+    matrizchar[4][5] = '1';
+    matrizchar[3][5] = '1';
+    matrizchar[3][4] = '1';
+    printf("\t\t\t\tRegras do Campo Minado\n");
+    inicializartabela(matrizint);
+    imprimirtela(matrizint, matrizchar, 2); 
+    printf("\nQuando houver mais de uma bomba em seu entorno,\na casa mostrara este valor.\n\nIsto pode ser visto na coordenada de linha 4 e coluna 4.\n");
+    printf("\nTecle enter para seguir.");
+    getchar();
+
+    system("clear");
+ 
+    //como vencer ou perder
+    printf("\t\t\t\tRegras do Campo Minado\n");
+    inicializartabela(matrizint);
+    imprimirtela(matrizint, matrizchar, 2); 
+    printf("\nO jogo se encerrara em duas condicoes: \n\n1. quando a casa escolhida conter uma mina (voce perdeu!)\n2. Apos todas as casas terem sido reveladas.\n");
+    printf("\nTecle enter para seguir.");
+    getchar();
+
+    system("clear");
+    
+    //motivacao para um jogo que depende de sorte
+    printf("\t\t\t\tRegras do Campo Minado\n");
+    printf("\nSeu objetivo e chegar ao fim do jogo, no menor tempo possivel.\n\n\t\tBoa sorte!!");
+    printf("\n\nTecle enter para voltar ao menu.");
+    getchar();
+
+    return 0;
+}
+
+
+int inicializar (int matriz[][9], char matriz[][9], char type) {
+
+    if (type == 'd') {
+
+        for (int i=0; i<9; i++ ){
+
+            for (int j=0; j<9; j++ ){
+                matriz[i][j]=0;
+            }
+        }
+    }
+
+    if (type == 'c') {
+
+        for (int i = 0; i<9; i++) { //inicializar como ?
+        
+            for (int j=0; j<9; j++) {
+                matrizjogador[i][j] = ' ';
+            }
+        }
+    }
+
+    else
+    {
+        printf("Erro de parametro.");
+    }
+    
     return 0;
 }
 
@@ -196,73 +321,91 @@ int inicializartabelajogo (char matrizjogador[][9]) {
 
 
 int bombasedicas (int numbombas, int matriz[][9]) {
+    //distribuir as bombas e as dicas
+
+    srand(time(NULL));
 
     int bombai, bombaj;
 
     for(int auxiliar=0; auxiliar<numbombas; auxiliar++){
 
-        bombai=rand() % 7;
-        bombaj=rand() % 7;
+        bombai=rand() % 8;
+        bombaj=rand() % 8;
 
-        if(bombai==0 || bombaj==0 || matriz[bombai][bombaj] >= 10){ 
+        if(matriz[bombai][bombaj] >= 10){  //caso ja houver uma mina
             auxiliar--;
         }
         else{
         matriz[bombai][bombaj]+=10;
 
-        //aqui comeca a distribuir as dicas nesse local de bomba//
+        //distribuir bombas no entorno da coordenada
+        
         bombai=bombai+1;
-        matriz[bombai][bombaj]++;
+        somardicas (bombai, bombaj, matriz);
+
         bombaj=bombaj+1;
-        matriz[bombai][bombaj]++;
+        somardicas (bombai, bombaj, matriz);
+
         bombai=bombai-1;
-        matriz[bombai][bombaj]++;
+        somardicas (bombai, bombaj, matriz);
+
         bombai=bombai-1;
-        matriz[bombai][bombaj]++;
+        somardicas (bombai, bombaj, matriz);
+
         bombaj=bombaj-1;
-        matriz[bombai][bombaj]++;
+        somardicas (bombai, bombaj, matriz);
+
         bombaj=bombaj-1;
-        matriz[bombai][bombaj]++;
+        somardicas (bombai, bombaj, matriz);
+
         bombai=bombai+1;
-        matriz[bombai][bombaj]++;
+        somardicas (bombai, bombaj, matriz);
+
         bombai=bombai+1;
-        matriz[bombai][bombaj]++;
+        somardicas (bombai, bombaj, matriz);
     }
   }
+
+  return 0;
 }
 
 
-int checarcoordenadas (int x, int y) { // Ver se coordenadas do usuario sao validas
+int somardicas (int bombai, int bombaj, int matriz[][9]) {
+    //somar dica a casa apenas se as coordenadas estiverem no vetor 
 
-    if ((x < 10 && x > 0 && y < 10 && y > 0) || (x == 33 && y == 33))
-        return 0;
-    else 
-        return 1;
+    if ((bombai >= 0) && (bombai < 9) && (bombaj >= 0) && (bombaj < 9))
+        matriz[bombai][bombaj]++;
+    else
+        return 0; 
+} 
+
+
+int imprimirtela (int matrizint[][9], char matrizchar[][9], int define) { 
+    //imprimir matrizes integer e character, usando o parametro "define"
     
-    //Seria interessante passar o valor das linhas e colunas de maneira variavel, mas ok
-}
+    if (define == 1) { //para int
 
-
-int imprimirtela (int matrizint[][9], char matrizchar[][9], int define) {
-    
-    if (define == 1) {
-        printf("\n\n    1    2    3    4    5    6    7    8    9\n\n");
+        printf("\n\n       [1]   [2]   [3]   [4]   [5]   [6]   [7]   [8]   [9]\n\n\n");
 
         for (int i=0; i<9; i++ ){
 
-            printf("%d  ", i+1);
+            printf("[%d]    ", i+1);
 
-            for (int j=0; j<9; j++ ){
-                printf("|%d|  " , matrizint[i][j]);
+            for (int j=0; j<9; j++ ) {
+
+              if (matrizint[i][j]<10)
+                printf(" %d    " , matrizint[i][j]);
+              else
+                printf("[X]   ");
             }
 
-            printf("\n\n");
+            printf("\n\n\n");
         }
 
         return 0;
     }
 
-    if (define == 2) {
+    if (define == 2) { //para char
 
         printf("\n\n      1     2     3     4     5     6     7     8     9\n\n\n");
 
@@ -279,6 +422,7 @@ int imprimirtela (int matrizint[][9], char matrizchar[][9], int define) {
 
         return 0;
     }
+
     else {
 
         printf("Erro de parâmetro.");
@@ -289,15 +433,20 @@ int imprimirtela (int matrizint[][9], char matrizchar[][9], int define) {
 
 int ranking () { // Armazena o ranking com nomes dos usuarios usando struct
     //A estudar melhor o funcionamento de struct
+
     system("clear");
 
-    printf("qualquercoisa");
+    printf("Precisamos completar isso.");
+    printf("\n\nDigite algo e tecle enter para retornar ao menu principal: ");
+    getchar();
+    getchar();
 
     return 0;
 }
 
 
-int fimpartida (int bomba, int tentativas, int tempo, int matriz[][9]) { //A tela do fim da partida
+int fimpartida (int bomba, int tentativas, int tempo, int matriz[][9]) { 
+    //A tela do fim da partida
 
     int input;
     //Exibir ranking ?
@@ -307,7 +456,7 @@ int fimpartida (int bomba, int tentativas, int tempo, int matriz[][9]) { //A tel
 
     if (bomba != 0) { //perdeu 
         printf("\nVocê pisou em uma bomba, que pena!\n"); //idealmente um único printf seria necessário, mas ninguém merece né
-        printf("Seu número de tentativas foi %d, e seu tempo foi de %d.", tentativas, tempo);
+        printf("Ainda lhe restavam %d tentativas, e seu tempo foi de %d.", tentativas, tempo);
         printf("\n\nConfira a seguir os locais das bombas e das dicas.\n");
     }
     else {            //ganhou
@@ -315,16 +464,18 @@ int fimpartida (int bomba, int tentativas, int tempo, int matriz[][9]) { //A tel
         printf("\n\n Confira a seguir os locais das bombas e das dicas.\n");
     }
 
-    imprimirtela(matriz, matriz, 1);
+    printf("Seu tempo foi de %d", tempo);
 
-    printf("Digite '1' para voltar ao menu principal.\n\n\n");
+    imprimirtela(matriz, matriz, 1); //inserir a segunda matriz aqui e irrelevante
+
+    printf("\nDigite '1' para voltar ao menu principal.\n\n\n");
     printf("Digite '2' para sair.\n\n\n");
 
     do {
         printf("O que deseja fazer?: ");
         scanf("%d", &input);
     }
-    while(input != 1 || input != 2);
+    while(input != 1 && input != 2);
     
     if (input == 2) {
         return 1;
