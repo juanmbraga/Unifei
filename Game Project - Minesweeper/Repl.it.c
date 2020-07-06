@@ -4,16 +4,15 @@
 #include <time.h>
 
 
+int exibirmenu ();
+int start ();
 int inicializar (int matrizint[][9], char matrizchar[][9], char type);
 int bombasedicas(int, int matriz[][9]);
 int somardicas (int bombai, int bombaj, int matriz[][9]);
-int start ();
 int imprimirtela (int matrizint[][9], char matrizchar[][9], int);
-int ranking ();
-int exibirmenu ();
 int fimpartida (int, int, int, int matriz[][9]);
 int rules ();
-  
+int ranking ();
 
 int main (void) {
 
@@ -22,7 +21,7 @@ int main (void) {
     do {
       int input;
 
-      system("clear");
+      system("cls");
       exibirmenu();
 
       do 
@@ -48,7 +47,7 @@ int main (void) {
     }
     while (control == 0); //As funcoes retornam 0 por padrao. Caso elas retornarem 1 o jogo encerra. 
 
-    system("clear");
+    system("cls");
     printf("\nJogo encerrado.\n");
 
     return 0; //programa finalizado
@@ -74,7 +73,7 @@ int start () { // Codigo do jogo
     char matrizjogador[9][9];                          //tabela vista pelo usuario
     int linhainput, colunainput;                       //variaveis de input
     int bomba, checagem, tentativas=70, numbombas=11;  //variaveis de controle
-    int tempo;                                         //A determinar
+    int tempo=12;                                         //A determinar
 
     /* utilizado caso preferissemos adicionar niveis de dificuldade
     #include <gambiarra.h>
@@ -91,13 +90,13 @@ int start () { // Codigo do jogo
     bombasedicas(numbombas, matriz);
 
     do {
-        system("clear");
+        system("cls");
 
-        printf("\n\t\t\t\t\t   CAMPO MINADO\n\n");
+        printf("\n\t\t\t\t   CAMPO MINADO\n\n");
         printf("\n\t\t\t\t\t\t\t\tTentativas restantes: %d.\n", tentativas);
 
         //remova o comentario para ver a tabela oculta
-        imprimirtela(matriz, matrizjogador, 1); 
+        //imprimirtela(matriz, matrizjogador, 1); 
 
         imprimirtela(NULL, matrizjogador, 2); 
         printf("Escolha a coordenada da casa para revelar.\nDigite 33 para voltar ao menu principal.\n_________________________________\n");
@@ -177,85 +176,6 @@ int start () { // Codigo do jogo
     //tentativas para ranking; 
     //tempo para ranking; 
     //matriz para exibir.
-}
-
-
-int rules () { 
-    //Exibir as regras
-    
-    int matrizint[9][9];
-    char matrizchar[9][9];
-
-    system("clear");
-    printf("\t\t\t\tRegras do Campo Minado\n");    
-
-    //Mostrar como será o tabuleiro de jogo
-    inicializar( NULL, matrizchar, 'c'); 
-    imprimirtela (matrizint, matrizchar, 2);
-    printf(" A tabela acima representa um campo minado.\n");
-    printf("\n De inicio, todas as casas estarao escondidas,\n cabe a voce escolher as coordenadas daquela que deseja abrir.");
-    printf("\n\nTome cuidado, pois se voce acertar uma mina, voce perde!");
-    printf("\n\nAperte qualquer tecla e tecle enter para seguir.\n\t");
-    getchar();
-    getchar(); //Gambiarra aprovada pelo Monitor©
-
-
-    system("clear");
-
-    //explicar como as dicas sao distribuidas
-    matrizchar[2][2] = 'X';
-    matrizchar[1][1] = '1';
-    matrizchar[2][1] = '1';
-    matrizchar[3][1] = '1';
-    matrizchar[3][2] = '1';
-    matrizchar[3][3] = '1';
-    matrizchar[2][3] = '1';
-    matrizchar[1][3] = '1';
-    matrizchar[1][2] = '1';
-    printf("\t\t\t\tRegras do Campo Minado\n");
-    imprimirtela(matrizint, matrizchar, 2); 
-    printf("Quando houver uma bomba (X), as casas adjacentes a sua\n receberao um numero indicando a quantidade de bombas ao seu entorno.");
-    printf("\n\nUse as dicas para se guiar e evitar as bombas.");
-    printf("\n\nA casa de linha 3 e coluna 3 exemplifica o explicado acima.\n");
-    printf("\nTecle enter para seguir.");
-    getchar();
-
-    system("clear");
-
-    //mais sobre dicas
-    matrizchar[4][4] = 'X';
-    matrizchar[5][3] = '1';
-    matrizchar[3][3] = '2';
-    matrizchar[4][3] = '1';
-    matrizchar[5][4] = '1';
-    matrizchar[5][5] = '1';
-    matrizchar[4][5] = '1';
-    matrizchar[3][5] = '1';
-    matrizchar[3][4] = '1';
-    printf("\t\t\t\tRegras do Campo Minado\n");
-    imprimirtela(matrizint, matrizchar, 2); 
-    printf("\nQuando houver mais de uma bomba em seu entorno,\na casa mostrara este valor.\n\nIsto pode ser visto na coordenada de linha 4 e coluna 4.\n");
-    printf("\nTecle enter para seguir.");
-    getchar();
-
-    system("clear");
- 
-    //como vencer ou perder
-    printf("\t\t\t\tRegras do Campo Minado\n");
-    imprimirtela(matrizint, matrizchar, 2); 
-    printf("\nO jogo se encerrara em duas condicoes: \n\n1. quando a casa escolhida conter uma mina (voce perdeu!)\n2. Apos todas as casas terem sido reveladas.\n");
-    printf("\nTecle enter para seguir.");
-    getchar();
-
-    system("clear");
-    
-    //motivacao para um jogo que depende de sorte
-    printf("\t\t\t\tRegras do Campo Minado\n");
-    printf("\nSeu objetivo e chegar ao fim do jogo, no menor tempo possivel.\n\n\t\tBoa sorte!!");
-    printf("\n\nTecle enter para voltar ao menu.");
-    getchar();
-
-    return 0;
 }
 
 
@@ -345,8 +265,8 @@ int somardicas (int bombai, int bombaj, int matriz[][9]) {
 
     if ((bombai >= 0) && (bombai < 9) && (bombaj >= 0) && (bombaj < 9))
         matriz[bombai][bombaj]++;
-    else
-        return 0; 
+
+    return 0; 
 } 
 
 
@@ -401,14 +321,79 @@ int imprimirtela (int matrizint[][9], char matrizchar[][9], int define) {
 }
 
 
-int ranking () { // Armazena o ranking com nomes dos usuarios usando struct
-    //A estudar melhor o funcionamento de struct
+int rules () { 
+    //Exibir as regras
+    
+    int matrizint[9][9];
+    char matrizchar[9][9];
 
-    system("clear");
+    system("cls");
+    printf("\t\t\t\tRegras do Campo Minado\n");    
 
-    printf("Precisamos completar isso.");
-    printf("\n\nDigite algo e tecle enter para retornar ao menu principal: ");
+    //Mostrar como será o tabuleiro de jogo
+    inicializar( NULL, matrizchar, 'c'); 
+    imprimirtela (matrizint, matrizchar, 2);
+    printf(" A tabela acima representa um campo minado.\n");
+    printf("\n De inicio, todas as casas estarao escondidas,\n cabe a voce escolher as coordenadas daquela que deseja abrir.");
+    printf("\n\nTome cuidado, pois se voce acertar uma mina, voce perde!");
+    printf("\n\nAperte qualquer tecla e tecle enter para seguir.\n\t");
     getchar();
+    getchar(); //Gambiarra aprovada pelo Monitor©
+
+
+    system("cls");
+
+    //explicar como as dicas sao distribuidas
+    matrizchar[2][2] = 'X';
+    matrizchar[1][1] = '1';
+    matrizchar[2][1] = '1';
+    matrizchar[3][1] = '1';
+    matrizchar[3][2] = '1';
+    matrizchar[3][3] = '1';
+    matrizchar[2][3] = '1';
+    matrizchar[1][3] = '1';
+    matrizchar[1][2] = '1';
+    printf("\t\t\t\tRegras do Campo Minado\n");
+    imprimirtela(matrizint, matrizchar, 2); 
+    printf("Quando houver uma bomba (X), as casas adjacentes a sua\n receberao um numero indicando a quantidade de bombas ao seu entorno.");
+    printf("\n\nUse as dicas para se guiar e evitar as bombas.");
+    printf("\n\nA casa de linha 3 e coluna 3 exemplifica o explicado acima.\n");
+    printf("\nTecle enter para seguir.");
+    getchar();
+
+    system("cls");
+
+    //mais sobre dicas
+    matrizchar[4][4] = 'X';
+    matrizchar[5][3] = '1';
+    matrizchar[3][3] = '2';
+    matrizchar[4][3] = '1';
+    matrizchar[5][4] = '1';
+    matrizchar[5][5] = '1';
+    matrizchar[4][5] = '1';
+    matrizchar[3][5] = '1';
+    matrizchar[3][4] = '1';
+    printf("\t\t\t\tRegras do Campo Minado\n");
+    imprimirtela(matrizint, matrizchar, 2); 
+    printf("\nQuando houver mais de uma bomba em seu entorno,\na casa mostrara este valor.\n\nIsto pode ser visto na coordenada de linha 4 e coluna 4.\n");
+    printf("\nTecle enter para seguir.");
+    getchar();
+
+    system("cls");
+ 
+    //como vencer ou perder
+    printf("\t\t\t\tRegras do Campo Minado\n");
+    imprimirtela(matrizint, matrizchar, 2); 
+    printf("\nO jogo se encerrara em duas condicoes: \n\n1. quando a casa escolhida conter uma mina (voce perdeu!)\n2. Apos todas as casas terem sido reveladas.\n");
+    printf("\nTecle enter para seguir.");
+    getchar();
+
+    system("cls");
+    
+    //motivacao para um jogo que depende de sorte
+    printf("\t\t\t\tRegras do Campo Minado\n");
+    printf("\nSeu objetivo e chegar ao fim do jogo, no menor tempo possivel.\n\n\t\tBoa sorte!!");
+    printf("\n\nTecle enter para voltar ao menu.");
     getchar();
 
     return 0;
@@ -422,7 +407,7 @@ int fimpartida (int bomba, int tentativas, int tempo, int matriz[][9]) {
     //Exibir ranking ?
     //exibir pontuação e/ou tempo
 
-    system("clear");
+    system("cls");
 
     if (bomba != 0) { //perdeu 
         printf("\nVocê pisou em uma bomba, que pena!\n"); //idealmente um único printf seria necessário, mas ninguém merece né
@@ -454,3 +439,19 @@ int fimpartida (int bomba, int tentativas, int tempo, int matriz[][9]) {
        return 0; //caso usuario digite o numero, ou de algum problema, retornar ao menu principal
     } 
 }
+
+
+int ranking () { // Armazena o ranking com nomes dos usuarios usando struct
+    //A estudar melhor o funcionamento de struct
+
+    system("clear");
+
+    printf("Precisamos completar isso.");
+    printf("\n\nDigite algo e tecle enter para retornar ao menu principal: ");
+    getchar();
+    getchar();
+
+    return 0;
+}
+
+
