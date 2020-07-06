@@ -21,7 +21,7 @@ int main (void) {
     do {
       int input;
 
-      system("cls");
+      system("clear");
       exibirmenu();
 
       do 
@@ -47,7 +47,7 @@ int main (void) {
     }
     while (control == 0); //As funcoes retornam 0 por padrao. Caso elas retornarem 1 o jogo encerra. 
 
-    system("cls");
+    system("clear");
     printf("\nJogo encerrado.\n");
 
     return 0; //programa finalizado
@@ -90,7 +90,7 @@ int start () { // Codigo do jogo
     bombasedicas(numbombas, matriz);
 
     do {
-        system("cls");
+        system("clear");
 
         printf("\n\t\t\t\t   CAMPO MINADO\n\n");
         printf("\n\t\t\t\t\t\t\t\tTentativas restantes: %d.\n", tentativas);
@@ -327,7 +327,7 @@ int rules () {
     int matrizint[9][9];
     char matrizchar[9][9];
 
-    system("cls");
+    system("clear");
     printf("\t\t\t\tRegras do Campo Minado\n");    
 
     //Mostrar como será o tabuleiro de jogo
@@ -341,7 +341,7 @@ int rules () {
     getchar(); //Gambiarra aprovada pelo Monitor©
 
 
-    system("cls");
+    system("clear");
 
     //explicar como as dicas sao distribuidas
     matrizchar[2][2] = 'X';
@@ -361,7 +361,7 @@ int rules () {
     printf("\nTecle enter para seguir.");
     getchar();
 
-    system("cls");
+    system("clear");
 
     //mais sobre dicas
     matrizchar[4][4] = 'X';
@@ -379,7 +379,7 @@ int rules () {
     printf("\nTecle enter para seguir.");
     getchar();
 
-    system("cls");
+    system("clear");
  
     //como vencer ou perder
     printf("\t\t\t\tRegras do Campo Minado\n");
@@ -388,7 +388,7 @@ int rules () {
     printf("\nTecle enter para seguir.");
     getchar();
 
-    system("cls");
+    system("clear");
     
     //motivacao para um jogo que depende de sorte
     printf("\t\t\t\tRegras do Campo Minado\n");
@@ -407,7 +407,7 @@ int fimpartida (int bomba, int tentativas, int tempo, int matriz[][9]) {
     //Exibir ranking ?
     //exibir pontuação e/ou tempo
 
-    system("cls");
+    system("clear");
 
     if (bomba != 0) { //perdeu 
         printf("\nVocê pisou em uma bomba, que pena!\n"); //idealmente um único printf seria necessário, mas ninguém merece né
