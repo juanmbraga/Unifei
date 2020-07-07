@@ -4,10 +4,10 @@
 #include <time.h>
 
 
-int exibirmenu ();
-int start ();
+int exibirmenu ();   //Exibe a parte grafica do menu principal
+int start ();        //codigo do jogo em si
 int inicializar (int matrizint[][9], char matrizchar[][9], char type);
-int bombasedicas(int, int matriz[][9]);
+int bombasedicas(int, int matriz[][9]); //distribui as dicas e as bombas dentro da matriz de respostas
 int somardicas (int bombai, int bombaj, int matriz[][9]);
 int imprimirtela (int matrizint[][9], char matrizchar[][9], int);
 int fimpartida (int, int, int, int matriz[][9]);
@@ -38,7 +38,7 @@ int main (void) {
               break;
           case 3: control = ranking(); //exibe o ranking
               break;
-          case 4: control = 1;           //encerra o jogo 
+          case 4: control = 1;         //encerra o jogo 
               break;
 
           default: control = 0;        //para input errado
@@ -71,9 +71,9 @@ int start () { // Codigo do jogo
 
     int matriz[9][9];                                  //tabela com os valores de dicas e bombas (oculta)
     char matrizjogador[9][9];                          //tabela vista pelo usuario
-    int linhainput, colunainput;                       //variaveis de input
+    int linhainput, colunainput;                       //variaveis de input durante o jogo 
     int bomba, checagem, tentativas=70, numbombas=11;  //variaveis de controle
-    int tempo=12;                                         //A determinar
+    int tempo=12;                                      //A determinar
 
     /* utilizado caso preferissemos adicionar niveis de dificuldade
     #include <gambiarra.h>
@@ -84,7 +84,7 @@ int start () { // Codigo do jogo
     tentativas = ((linha*coluna) - numbombas);
     */
 
-    inicializar(matriz, NULL, 'i'); //inicializar tabela int
+    inicializar(matriz, NULL, 'i');        //inicializar tabela int
     inicializar(NULL, matrizjogador, 'c'); //inicializar tabela char
 
     bombasedicas(numbombas, matriz);
@@ -213,7 +213,7 @@ int inicializar (int matrizint[][9], char matrizchar[][9], char type) {
 int bombasedicas (int numbombas, int matriz[][9]) {
     //distribuir as bombas e as dicas
 
-    srand(time(NULL));
+    srand(time(NULL)); //para os números aleatórios terem o tempo como semente
 
     int bombai, bombaj;
 
@@ -222,13 +222,13 @@ int bombasedicas (int numbombas, int matriz[][9]) {
         bombai=rand() % 8;
         bombaj=rand() % 8;
 
-        if(matriz[bombai][bombaj] >= 10){  //caso ja houver uma mina
+        if(matriz[bombai][bombaj] >= 10){  //caso ja houver uma mina gera um novo numero aleatório e repete o processo
             auxiliar--;
         }
         else{
         matriz[bombai][bombaj]+=10;
 
-        //distribuir dicas no entorno da coordenada
+        //distribuir dicas no entorno da coordenada da bomba
         
         bombai=bombai+1;
         somardicas (bombai, bombaj, matriz);
