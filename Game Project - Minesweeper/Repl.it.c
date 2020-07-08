@@ -4,16 +4,15 @@
 #include <time.h>
 
 
+int exibirmenu ();   //Exibe a parte grafica do menu principal
+int start ();        //codigo do jogo em si
 int inicializar (int matrizint[][9], char matrizchar[][9], char type);
-int bombasedicas(int, int matriz[][9]);
+int bombasedicas(int, int matriz[][9]); //distribui as dicas e as bombas dentro da matriz de respostas
 int somardicas (int bombai, int bombaj, int matriz[][9]);
-int start ();
 int imprimirtela (int matrizint[][9], char matrizchar[][9], int);
-int ranking ();
-int exibirmenu ();
-int fimpartida (int, int, int, int matriz[][9]);
+int fimpartida (int, int, time_t, int matriz[][9]);
 int rules ();
-  
+int ranking ();
 
 int main (void) {
 
@@ -39,7 +38,7 @@ int main (void) {
               break;
           case 3: control = ranking(); //exibe o ranking
               break;
-          case 4: control = 1;           //encerra o jogo 
+          case 4: control = 1;         //encerra o jogo 
               break;
 
           default: control = 0;        //para input errado
@@ -72,9 +71,9 @@ int start () { // Codigo do jogo
 
     int matriz[9][9];                                  //tabela com os valores de dicas e bombas (oculta)
     char matrizjogador[9][9];                          //tabela vista pelo usuario
-    int linhainput, colunainput;                       //variaveis de input
+    int linhainput, colunainput;                       //variaveis de input durante o jogo 
     int bomba, checagem, tentativas=70, numbombas=11;  //variaveis de controle
-    int tempo;                                         //A determinar
+    time_t start_t, end_t;                                      //A determinar
 
     /* utilizado caso preferissemos adicionar niveis de dificuldade
     #include <gambiarra.h>
@@ -85,19 +84,22 @@ int start () { // Codigo do jogo
     tentativas = ((linha*coluna) - numbombas);
     */
 
-    inicializar(matriz, NULL, 'i'); //inicializar tabela int
+    inicializar(matriz, NULL, 'i');        //inicializar tabela int
     inicializar(NULL, matrizjogador, 'c'); //inicializar tabela char
 
     bombasedicas(numbombas, matriz);
 
+    time(&start_t);
+    
+
     do {
         system("clear");
 
-        printf("\n\t\t\t\t\t   CAMPO MINADO\n\n");
+        printf("\n\t\t\t\t   CAMPO MINADO\n\n");
         printf("\n\t\t\t\t\t\t\t\tTentativas restantes: %d.\n", tentativas);
 
         //remova o comentario para ver a tabela oculta
-        imprimirtela(matriz, matrizjogador, 1); 
+        //imprimirtela(matriz, matrizjogador, 1); 
 
         imprimirtela(NULL, matrizjogador, 2); 
         printf("Escolha a coordenada da casa para revelar.\nDigite 33 para voltar ao menu principal.\n_________________________________\n");
@@ -172,11 +174,155 @@ int start () { // Codigo do jogo
     }
     while (bomba == 0 && tentativas != 0);
 
-    return fimpartida (bomba, tentativas, tempo, matriz);
+    time(&end_t);
+
+    return fimpartida (bomba, tentativas, end_t-start_t, matriz);
     //bomba para saber se ganhou ou perdeu; 
     //tentativas para ranking; 
     //tempo para ranking; 
     //matriz para exibir.
+}
+
+
+int inicializar (int matrizint[][9], char matrizchar[][9], char type) {
+    //inicializar com zero ou espaco, os vetores multid. de tipo int e char
+    
+    if (type == 'i') {
+
+        for (int i=0; i<9; i++ ){
+
+            for (int j=0; j<9; j++ ){
+                matrizint[i][j]=0;
+            }
+        }
+    }
+    else {
+        if (type == 'c') {
+
+            for (int i = 0; i<9; i++) { //inicializar como ?
+            
+                for (int j=0; j<9; j++) {
+                    matrizchar[i][j] = '~';
+                }
+            }
+        }
+        else {
+            printf("Erro de parametro.");
+        }
+    }
+
+    return 0;
+}
+
+
+int bombasedicas (int numbombas, int matriz[][9]) {
+    //distribuir as bombas e as dicas
+
+    srand(time(NULL)); //para os números aleatórios terem o tempo como semente
+
+    int bombai, bombaj;
+
+    for(int auxiliar=0; auxiliar<numbombas; auxiliar++){
+
+        bombai=rand() % 8;
+        bombaj=rand() % 8;
+
+        if(matriz[bombai][bombaj] >= 10){  //caso ja houver uma mina gera um novo numero aleatório e repete o processo
+            auxiliar--;
+        }
+        else{
+        matriz[bombai][bombaj]+=10;
+
+        //distribuir dicas no entorno da coordenada da bomba
+        
+        bombai=bombai+1;
+        somardicas (bombai, bombaj, matriz);
+
+        bombaj=bombaj+1;
+        somardicas (bombai, bombaj, matriz);
+
+        bombai=bombai-1;
+        somardicas (bombai, bombaj, matriz);
+
+        bombai=bombai-1;
+        somardicas (bombai, bombaj, matriz);
+
+        bombaj=bombaj-1;
+        somardicas (bombai, bombaj, matriz);
+
+        bombaj=bombaj-1;
+        somardicas (bombai, bombaj, matriz);
+
+        bombai=bombai+1;
+        somardicas (bombai, bombaj, matriz);
+
+        bombai=bombai+1;
+        somardicas (bombai, bombaj, matriz);
+    }
+  }
+
+  return 0;
+}
+
+
+int somardicas (int bombai, int bombaj, int matriz[][9]) {
+    //somar dica a casa apenas se as coordenadas estiverem no vetor 
+
+    if ((bombai >= 0) && (bombai < 9) && (bombaj >= 0) && (bombaj < 9))
+        matriz[bombai][bombaj]++;
+
+    return 0; 
+} 
+
+
+int imprimirtela (int matrizint[][9], char matrizchar[][9], int define) { 
+    //imprimir matrizes integer e character, usando o parametro "define"
+    
+    if (define == 1) { //para int
+
+        printf("\n\n       [1]   [2]   [3]   [4]   [5]   [6]   [7]   [8]   [9]\n\n\n");
+
+        for (int i=0; i<9; i++ ){
+
+            printf("[%d]    ", i+1);
+
+            for (int j=0; j<9; j++ ) {
+
+              if (matrizint[i][j]<10)
+                printf(" %d    " , matrizint[i][j]);
+              else
+                printf("[X]   ");
+            }
+
+            printf("\n\n\n");
+        }
+
+        return 0;
+    }
+
+    if (define == 2) { //para char
+
+        printf("\n\n       [1]   [2]   [3]   [4]   [5]   [6]   [7]   [8]   [9]\n\n\n");
+
+        for (int i=0; i<9; i++ ){
+
+            printf("[%d]    ", i+1);
+
+            for (int j=0; j<9; j++ ){
+                printf(" %c    " , matrizchar[i][j]);
+            }
+
+            printf("\n\n\n");
+        }
+
+        return 0;
+    }
+
+    else {
+
+        printf("Erro de parâmetro.");
+        return 0;
+    }
 }
 
 
@@ -259,184 +405,42 @@ int rules () {
 }
 
 
-int inicializar (int matrizint[][9], char matrizchar[][9], char type) {
-    //inicializar com zero ou espaco, os vetores multid. de tipo int e char
-    
-    if (type == 'i') {
-
-        for (int i=0; i<9; i++ ){
-
-            for (int j=0; j<9; j++ ){
-                matrizint[i][j]=0;
-            }
-        }
-    }
-    else {
-        if (type == 'c') {
-
-            for (int i = 0; i<9; i++) { //inicializar como ?
-            
-                for (int j=0; j<9; j++) {
-                    matrizchar[i][j] = '~';
-                }
-            }
-        }
-        else {
-            printf("Erro de parametro.");
-        }
-    }
-
-    return 0;
-}
-
-
-int bombasedicas (int numbombas, int matriz[][9]) {
-    //distribuir as bombas e as dicas
-
-    srand(time(NULL));
-
-    int bombai, bombaj;
-
-    for(int auxiliar=0; auxiliar<numbombas; auxiliar++){
-
-        bombai=rand() % 8;
-        bombaj=rand() % 8;
-
-        if(matriz[bombai][bombaj] >= 10){  //caso ja houver uma mina
-            auxiliar--;
-        }
-        else{
-        matriz[bombai][bombaj]+=10;
-
-        //distribuir dicas no entorno da coordenada
-        
-        bombai=bombai+1;
-        somardicas (bombai, bombaj, matriz);
-
-        bombaj=bombaj+1;
-        somardicas (bombai, bombaj, matriz);
-
-        bombai=bombai-1;
-        somardicas (bombai, bombaj, matriz);
-
-        bombai=bombai-1;
-        somardicas (bombai, bombaj, matriz);
-
-        bombaj=bombaj-1;
-        somardicas (bombai, bombaj, matriz);
-
-        bombaj=bombaj-1;
-        somardicas (bombai, bombaj, matriz);
-
-        bombai=bombai+1;
-        somardicas (bombai, bombaj, matriz);
-
-        bombai=bombai+1;
-        somardicas (bombai, bombaj, matriz);
-    }
-  }
-
-  return 0;
-}
-
-
-int somardicas (int bombai, int bombaj, int matriz[][9]) {
-    //somar dica a casa apenas se as coordenadas estiverem no vetor 
-
-    if ((bombai >= 0) && (bombai < 9) && (bombaj >= 0) && (bombaj < 9))
-        matriz[bombai][bombaj]++;
-    else
-        return 0; 
-} 
-
-
-int imprimirtela (int matrizint[][9], char matrizchar[][9], int define) { 
-    //imprimir matrizes integer e character, usando o parametro "define"
-    
-    if (define == 1) { //para int
-
-        printf("\n\n       [1]   [2]   [3]   [4]   [5]   [6]   [7]   [8]   [9]\n\n\n");
-
-        for (int i=0; i<9; i++ ){
-
-            printf("[%d]    ", i+1);
-
-            for (int j=0; j<9; j++ ) {
-
-              if (matrizint[i][j]<10)
-                printf(" %d    " , matrizint[i][j]);
-              else
-                printf("[X]   ");
-            }
-
-            printf("\n\n\n");
-        }
-
-        return 0;
-    }
-
-    if (define == 2) { //para char
-
-        printf("\n\n       [1]   [2]   [3]   [4]   [5]   [6]   [7]   [8]   [9]\n\n\n");
-
-        for (int i=0; i<9; i++ ){
-
-            printf("[%d]    ", i+1);
-
-            for (int j=0; j<9; j++ ){
-                printf(" %c    " , matrizchar[i][j]);
-            }
-
-            printf("\n\n\n");
-        }
-
-        return 0;
-    }
-
-    else {
-
-        printf("Erro de parâmetro.");
-        return 0;
-    }
-}
-
-
-int ranking () { // Armazena o ranking com nomes dos usuarios usando struct
-    //A estudar melhor o funcionamento de struct
-
-    system("clear");
-
-    printf("Precisamos completar isso.");
-    printf("\n\nDigite algo e tecle enter para retornar ao menu principal: ");
-    getchar();
-    getchar();
-
-    return 0;
-}
-
-
-int fimpartida (int bomba, int tentativas, int tempo, int matriz[][9]) { 
+int fimpartida (int bomba, int tentativas, time_t tempo, int matriz[][9]) { 
     //A tela do fim da partida
 
     int input;
-    //Exibir ranking ?
-    //exibir pontuação e/ou tempo
+
+    struct ranking {    //criar registro contendo nome e tempo
+        char nome[20];
+        int tempo;
+    };
+
+    struct ranking dados;   //criando variavel dados
 
     system("clear");
 
     if (bomba != 0) { //perdeu 
         printf("\nVocê pisou em uma bomba, que pena!\n"); //idealmente um único printf seria necessário, mas ninguém merece né
-        printf("Ainda lhe restavam %d tentativas, e seu tempo foi de %d.", tentativas, tempo);
+        printf("Ainda lhe restavam %d tentativas, e seu tempo foi de %lld.", tentativas, (long long) tempo);
         printf("\n\nConfira a seguir os locais das bombas e das dicas.\n");
+
+        imprimirtela(matriz, NULL, 1); //inserir a segunda matriz aqui e irrelevante
     }
     else {            //ganhou
-        printf("\n\nParabéns! Você conseguiu abrir todas as casas sem pisar em nenhuma bomba!\n E seu tempo foi de %d.", tempo);
+        printf("\n\nParabéns! Você conseguiu abrir todas as casas sem pisar em nenhuma bomba!\n E seu tempo foi de %lld segundos.", (long long) tempo);
         printf("\n\n Confira a seguir os locais das bombas e das dicas.\n");
+
+        imprimirtela(matriz, NULL, 1); //inserir a segunda matriz aqui e irrelevante
+
+        printf("\n\nDigite seu nome de ate 20 digitos (para ficar na historia): ");
+        scanf(" %s", dados.nome);
+        dados.tempo= (int) tempo;   //associar valor de tempo recebido do jogo a variavel time de struct
+
+        FILE *file;
+            file = fopen("ranking", "a");
+            fprintf(file, "*%s %d\n", dados.nome, dados.tempo);
+            fclose(file);
     }
-
-    printf("Seu tempo foi de %d\n", tempo);
-
-    imprimirtela(matriz, NULL, 1); //inserir a segunda matriz aqui e irrelevante
 
     printf("\nDigite '1' para voltar ao menu principal.\n\n\n");
     printf("Digite '2' para sair.\n\n\n");
@@ -453,4 +457,32 @@ int fimpartida (int bomba, int tentativas, int tempo, int matriz[][9]) {
     else {
        return 0; //caso usuario digite o numero, ou de algum problema, retornar ao menu principal
     } 
+}
+
+
+int ranking () { // Armazena o ranking com nomes dos usuarios usando struct
+
+    system("clear");
+
+    printf("\n\nEsta e a lista das pontuacoes dos jogos anteriores.\n");
+
+    char ranking[400];
+
+    FILE *file;
+
+    file = fopen("ranking", "r");
+
+    while(fgets(ranking, 400, file) != NULL){
+
+        printf("\n\n%s", ranking);
+    }
+
+    fclose(file);
+
+    printf("\n\nDigite qualquer coisa e tecle enter pra voltar ao menu principal.");
+
+    getchar();
+    getchar();
+
+    return 0;
 }
