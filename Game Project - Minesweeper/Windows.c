@@ -26,7 +26,7 @@ int main (void) {
 
       do 
       {
-          printf("Digite a opção desejada: ");
+          printf("Digite a opcao desejada: ");
           scanf("%d", &input);
       }
       while (input < 0 && input > 5);
@@ -56,7 +56,7 @@ int main (void) {
 
 int exibirmenu () { //Exibe a parte grafica do menu principal
 
-    printf("Olá, bem vindo ao campo minado!\n\n\n");
+    printf("Ola, bem vindo ao campo minado!\n\n\n");
     printf("--------------------------------\n\n\n");
     printf(" [1] para iniciar o jogo\n\n\n");
     printf(" [2] para ver as regras de como jogar\n\n\n");
@@ -173,6 +173,8 @@ int start () { // Codigo do jogo
           }
     }
     while (bomba == 0 && tentativas != 0);
+
+
 
     time(&end_t);
 
@@ -320,7 +322,7 @@ int imprimirtela (int matrizint[][9], char matrizchar[][9], int define) {
 
     else {
 
-        printf("Erro de parâmetro.");
+        printf("Erro de parametro.");
         return 0;
     }
 }
@@ -427,7 +429,7 @@ int fimpartida (int bomba, int tentativas, time_t tempo, int matriz[][9]) {
         imprimirtela(matriz, NULL, 1); //inserir a segunda matriz aqui e irrelevante
     }
     else {            //ganhou
-        printf("\n\nParabéns! Você conseguiu abrir todas as casas sem pisar em nenhuma bomba!\n E seu tempo foi de %lld segundos.", (long long) tempo);
+        printf("\n\nParabens! Voce conseguiu abrir todas as casas sem pisar em nenhuma bomba!\n E seu tempo foi de %lld segundos.", (long long) tempo);
         printf("\n\n Confira a seguir os locais das bombas e das dicas.\n");
 
         imprimirtela(matriz, NULL, 1); //inserir a segunda matriz aqui e irrelevante
@@ -469,6 +471,9 @@ int ranking () { // Armazena o ranking com nomes dos usuarios usando struct
     char ranking[400];
 
     FILE *file;
+
+    file = fopen("ranking", "a"); //caso nao tenha nenhum jogo salvo ainda
+    fclose(file);
 
     file = fopen("ranking", "r");
 
