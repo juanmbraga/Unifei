@@ -470,6 +470,9 @@ int ranking () { // Armazena o ranking com nomes dos usuarios usando struct
 
     FILE *file;
 
+    file = fopen("ranking", "a"); //caso nao tenha nenhum jogo salvo ainda
+    fclose(file);
+
     file = fopen("ranking", "r");
 
     while(fgets(ranking, 400, file) != NULL){
