@@ -24,7 +24,7 @@ int main (void) {
       system("cls");
       exibirmenu();
 
-      do 
+      do
       {
           printf("Digite a opcao desejada: ");
           scanf("%d", &input);
@@ -38,14 +38,14 @@ int main (void) {
               break;
           case 3: control = ranking(); //exibe o ranking
               break;
-          case 4: control = 1;         //encerra o jogo 
+          case 4: control = 1;         //encerra o jogo
               break;
 
           default: control = 0;        //para input errado
       }
-      
+
     }
-    while (control == 0); //As funcoes retornam 0 por padrao. Caso elas retornarem 1 o jogo encerra. 
+    while (control == 0); //As funcoes retornam 0 por padrao. Caso elas retornarem 1 o jogo encerra.
 
     system("cls");
     printf("\nJogo encerrado.\n");
@@ -71,7 +71,7 @@ int start () { // Codigo do jogo
 
     int matriz[9][9];                                  //tabela com os valores de dicas e bombas (oculta)
     char matrizjogador[9][9];                          //tabela vista pelo usuario
-    int linhainput, colunainput;                       //variaveis de input durante o jogo 
+    int linhainput, colunainput;                       //variaveis de input durante o jogo
     int bomba, checagem, tentativas=70, numbombas=11;  //variaveis de controle
     time_t start_t, end_t;                                      //A determinar
 
@@ -90,7 +90,7 @@ int start () { // Codigo do jogo
     bombasedicas(numbombas, matriz);
 
     time(&start_t);
-    
+
 
     do {
         system("cls");
@@ -99,11 +99,11 @@ int start () { // Codigo do jogo
         printf("\n\t\t\t\t\t\t\t\tTentativas restantes: %d.\n", tentativas);
 
         //remova o comentario para ver a tabela oculta
-        //imprimirtela(matriz, matrizjogador, 1); 
+        //imprimirtela(matriz, matrizjogador, 1);
 
-        imprimirtela(NULL, matrizjogador, 2); 
+        imprimirtela(NULL, matrizjogador, 2);
         printf("Escolha a coordenada da casa para revelar.\nDigite 33 para voltar ao menu principal.\n_________________________________\n");
-        
+
         do { //Foi optado por nao modularizar para o case 33 sair do jogo diretamente.
 
             printf ("\nInsira o valor da linha: ");
@@ -149,11 +149,11 @@ int start () { // Codigo do jogo
                 default:
                     checagem = 1;
             }
-        } 
+        }
         while (checagem == 1);
 
         //corrigir o input do usuario para vetor multidimensional
-        linhainput--; 
+        linhainput--;
         colunainput--;
 
         if(matrizjogador[linhainput][colunainput] != '~') //checar se casa ainda nao foi revelada
@@ -161,7 +161,7 @@ int start () { // Codigo do jogo
 
         else {
 
-            tentativas--; //casa ainda nao revelada (ok), descontar tentativa 
+            tentativas--; //casa ainda nao revelada (ok), descontar tentativa
 
             if (matriz[linhainput][colunainput] >= 10) //é bomba, perdeu!
               bomba = 1;
@@ -179,16 +179,16 @@ int start () { // Codigo do jogo
     time(&end_t);
 
     return fimpartida (bomba, tentativas, end_t-start_t, matriz);
-    //bomba para saber se ganhou ou perdeu; 
-    //tentativas para ranking; 
-    //tempo para ranking; 
+    //bomba para saber se ganhou ou perdeu;
+    //tentativas para ranking;
+    //tempo para ranking;
     //matriz para exibir.
 }
 
 
 int inicializar (int matrizint[][9], char matrizchar[][9], char type) {
     //inicializar com zero ou espaco, os vetores multid. de tipo int e char
-    
+
     if (type == 'i') {
 
         for (int i=0; i<9; i++ ){
@@ -202,7 +202,7 @@ int inicializar (int matrizint[][9], char matrizchar[][9], char type) {
         if (type == 'c') {
 
             for (int i = 0; i<9; i++) { //inicializar como ?
-            
+
                 for (int j=0; j<9; j++) {
                     matrizchar[i][j] = '~';
                 }
@@ -236,7 +236,7 @@ int bombasedicas (int numbombas, int matriz[][9]) {
         matriz[bombai][bombaj]+=10;
 
         //distribuir dicas no entorno da coordenada da bomba
-        
+
         bombai=bombai+1;
         somardicas (bombai, bombaj, matriz);
 
@@ -268,18 +268,18 @@ int bombasedicas (int numbombas, int matriz[][9]) {
 
 
 int somardicas (int bombai, int bombaj, int matriz[][9]) {
-    //somar dica a casa apenas se as coordenadas estiverem no vetor 
+    //somar dica a casa apenas se as coordenadas estiverem no vetor
 
     if ((bombai >= 0) && (bombai < 9) && (bombaj >= 0) && (bombaj < 9))
         matriz[bombai][bombaj]++;
 
-    return 0; 
-} 
+    return 0;
+}
 
 
-int imprimirtela (int matrizint[][9], char matrizchar[][9], int define) { 
+int imprimirtela (int matrizint[][9], char matrizchar[][9], int define) {
     //imprimir matrizes integer e character, usando o parametro "define"
-    
+
     if (define == 1) { //para int
 
         printf("\n\n       [1]   [2]   [3]   [4]   [5]   [6]   [7]   [8]   [9]\n\n\n");
@@ -328,17 +328,17 @@ int imprimirtela (int matrizint[][9], char matrizchar[][9], int define) {
 }
 
 
-int rules () { 
+int rules () {
     //Exibir as regras
-    
+
     int matrizint[9][9];
     char matrizchar[9][9];
 
     system("cls");
-    printf("\t\t\t\tRegras do Campo Minado\n");    
+    printf("\t\t\t\tRegras do Campo Minado\n");
 
     //Mostrar como será o tabuleiro de jogo
-    inicializar( NULL, matrizchar, 'c'); 
+    inicializar( NULL, matrizchar, 'c');
     imprimirtela (matrizint, matrizchar, 2);
     printf(" A tabela acima representa um campo minado.\n");
     printf("\n De inicio, todas as casas estarao escondidas,\n cabe a voce escolher as coordenadas daquela que deseja abrir.");
@@ -361,7 +361,7 @@ int rules () {
     matrizchar[1][3] = '1';
     matrizchar[1][2] = '1';
     printf("\t\t\t\tRegras do Campo Minado\n");
-    imprimirtela(matrizint, matrizchar, 2); 
+    imprimirtela(matrizint, matrizchar, 2);
     printf("Quando houver uma bomba (X), as casas adjacentes a sua\n receberao um numero indicando a quantidade de bombas ao seu entorno.");
     printf("\n\nUse as dicas para se guiar e evitar as bombas.");
     printf("\n\nA casa de linha 3 e coluna 3 exemplifica o explicado acima.\n");
@@ -381,22 +381,22 @@ int rules () {
     matrizchar[3][5] = '1';
     matrizchar[3][4] = '1';
     printf("\t\t\t\tRegras do Campo Minado\n");
-    imprimirtela(matrizint, matrizchar, 2); 
+    imprimirtela(matrizint, matrizchar, 2);
     printf("\nQuando houver mais de uma bomba em seu entorno,\na casa mostrara este valor.\n\nIsto pode ser visto na coordenada de linha 4 e coluna 4.\n");
     printf("\nTecle enter para seguir.");
     getchar();
 
     system("cls");
- 
+
     //como vencer ou perder
     printf("\t\t\t\tRegras do Campo Minado\n");
-    imprimirtela(matrizint, matrizchar, 2); 
+    imprimirtela(matrizint, matrizchar, 2);
     printf("\nO jogo se encerrara em duas condicoes: \n\n1. quando a casa escolhida conter uma mina (voce perdeu!)\n2. Apos todas as casas terem sido reveladas.\n");
     printf("\nTecle enter para seguir.");
     getchar();
 
     system("cls");
-    
+
     //motivacao para um jogo que depende de sorte
     printf("\t\t\t\tRegras do Campo Minado\n");
     printf("\nSeu objetivo e chegar ao fim do jogo, no menor tempo possivel.\n\n\t\tBoa sorte!!");
@@ -407,7 +407,7 @@ int rules () {
 }
 
 
-int fimpartida (int bomba, int tentativas, time_t tempo, int matriz[][9]) { 
+int fimpartida (int bomba, int tentativas, time_t tempo, int matriz[][9]) {
     //A tela do fim da partida
 
     int input;
@@ -421,7 +421,7 @@ int fimpartida (int bomba, int tentativas, time_t tempo, int matriz[][9]) {
 
     system("cls");
 
-    if (bomba != 0) { //perdeu 
+    if (bomba != 0) { //perdeu
         printf("\nVocê pisou em uma bomba, que pena!\n"); //idealmente um único printf seria necessário, mas ninguém merece né
         printf("Ainda lhe restavam %d tentativas, e seu tempo foi de %lld.", tentativas, (long long) tempo);
         printf("\n\nConfira a seguir os locais das bombas e das dicas.\n");
@@ -452,13 +452,13 @@ int fimpartida (int bomba, int tentativas, time_t tempo, int matriz[][9]) {
         scanf("%d", &input);
     }
     while(input != 1 && input != 2);
-    
+
     if (input == 2) {
         return 1;
     }
     else {
        return 0; //caso usuario digite o numero, ou de algum problema, retornar ao menu principal
-    } 
+    }
 }
 
 
