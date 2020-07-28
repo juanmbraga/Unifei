@@ -23,7 +23,7 @@ int main(void) {
   printf("Por favor, insira o prazo do processo e digite enter.\n");
   scanf("%f", &prazo);
   printf("Por favor, insira o tipo do cliente e digite enter.\n");
-  scanf("%f", &cliente);  
+  scanf("%c", &cliente);  
 
   //checagem
   if (prazo < 0 || valor < 0) {
