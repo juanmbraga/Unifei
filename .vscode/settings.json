@@ -6,6 +6,8 @@
         "initializer_list": "c",
         "regex": "c",
         "utility": "c",
-        "valarray": "c"
+        "valarray": "c",
+        "eX01.C": "cpp",
+        "Ex01.c.C": "cpp"
     }
 }
