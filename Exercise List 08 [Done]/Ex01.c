@@ -14,16 +14,16 @@ int main (void) {
     float notas[10], media;
     int total;
 
-    printf("\nSaiba quantos dos dez alunos tiraram mais que a média.\n");
+    printf("\nSaiba quantos dos dez alunos tiraram mais que a media.\n");
 
     //receber o input das dez notas
     for (int i=0; i<10; i++) {   
 
         do {
-            printf("Digite a nota do aluno e tecle enter: ");
+            printf("Digite a nota do aluno n. %d e tecle enter: ", i+1);
             scanf("%f", &notas[i]);
         }
-        while (notas[i] < 0 || notas[i] > 10)
+        while (notas[i] < 0 || notas[i] > 10);
 
     }
 
@@ -34,6 +34,7 @@ int main (void) {
     }
     media = media/10;
 
+
     //checar numero de alunos que estejam acima dela
     total = 0;
     for(int i=0; i<10; i++) {
@@ -43,4 +44,5 @@ int main (void) {
 
     printf("\nO total de alunos que estao acima da media e de %d.", total);
 
+    return 0;
 }

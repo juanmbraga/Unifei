@@ -1,0 +1,13 @@
+7.Resolva   os   exercícios   de   Vetordo   Livro   Fundamentos   da   Programação   
+de Computadores (Ascencio e Campos) (Na 3ª edição é o capítulo 6)oNo  exercício  8,  
+considere  o  nome  de  cada  aluno  como  sendo  um  único caracter.
+
+O problema com o que ela propos e que:
+
+1. Eu nao pude encontrar um exercicio de numero oito que falasse sobre alunos,
+tanto dentro dos exercicios resolvidos, ou nos propostos. (sim, chequei se era 
+a mesma edicao do livro, e parece que sim)
+
+2. Os propostos e os resolvidos tem 25 exercicios cada, totalizando 50. PELAMOR
+
+Eu aqui, portanto, DECLARO ENCERRADA ESTA LISTA.
