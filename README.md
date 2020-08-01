@@ -6,7 +6,7 @@
 
     All of the comments and content are in portuguese, with a few exceptions where english words have been used as variable names.
 
-    [Done] after the folder name implies the exercises were done.
+    [Done] after the folder name implies the exercises have been finished.
     
     [Reviewed] signifies that the code has been reviewed, corrected and is final. (done after the end of the semester)
     
