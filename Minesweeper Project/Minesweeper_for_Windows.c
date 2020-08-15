@@ -175,8 +175,8 @@ int start () { // Codigo do jogo
     while (bomba == 0 && tentativas != 0);
 
 
-
     time(&end_t);
+
 
     return fimpartida (bomba, tentativas, end_t-start_t, matriz);
     //bomba para saber se ganhou ou perdeu;
