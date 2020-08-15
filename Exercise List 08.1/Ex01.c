@@ -45,14 +45,12 @@ int main (void) {
     maior = vetor[0][0]; //inicializar, para nao sair zero em caso de todos serem negativos.
 
     for (int i=0; i<2; i++) {
-
         for (int j=0; j<3; j++) {
 
             if (vetor[i][j] > maior)
                 maior = vetor[i][j]; 
-        
+                
         }
-    
     }
 
     printf ("\nO maior valor da lista e o %d.", maior);
