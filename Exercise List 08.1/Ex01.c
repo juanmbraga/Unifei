@@ -4,56 +4,42 @@ de  números  inteiros. Depois de preenchida, imprima os elementos digitados lin
 por linha e depois o valor do maior elemento.
 */
 
-//preencher vetor 2x3 de inteiros, depois imprimir os elementos linha por linha e o maior valor
+//preencher vetor 2x3, depois imprimir os elementos linha por linha e o maior valor
 
 
 #include <stdio.h>
+#include <stdlib.h> //para system("cls")
 
 int main (void) {
 
     int vetor[2][3], maior;
 
-    printf("\nReveja os elementos de uma matriz 2x3 e saiba seu maior valor.\n");
+    system("cls");
 
-//receber os dados
-    for (int i=0; i<2; i++) {
+    printf("\nReveja os elementos de uma matriz 2x3 e saiba seu maior valor.\n\n");
 
+    for (int i=0; i<2; i++) {   //receber os valores do usuario
         for (int j=0; j<3; j++) {
-
-            printf("\nInsira um valor para a casa (%d,%d): ", i+1, j+1);
+            printf("Insira um valor para a casa (%d,%d): ", i+1, j+1);
             scanf("%d", &vetor[i][j]);
-
         }
-
     }
 
-//imprimir os dados inseridos
-    printf("Segue a matriz inserida:\n\n");
-    for (int i=0; i<2; i++) {
-
+    for (int i=0; i<2; i++) {   //imprimir todos os valores por linha
         for (int j=0; j<3; j++) {
-
-            printf("%d  ", vetor[i][j]);
-        
+            printf("%d ", vetor[i][j]);
         }
-
         printf("\n");
-    
     }
 
-//procurar pelo maior valor
-    maior = vetor[0][0]; //inicializar, para nao sair zero em caso de todos serem negativos.
+    maior = vetor[0][0];    //inicializando a variavel (com zero poderia nao funcionar caso tudo fosse negativo)
 
-    for (int i=0; i<2; i++) {
-        for (int j=0; j<3; j++) {
-
+    for (int i=0; i<2; i++) {   //verificar qual e o maior item
+        for(int j=0; j<3; j++) {
             if (vetor[i][j] > maior)
-                maior = vetor[i][j]; 
-                
+                maior = vetor[i][j];
         }
     }
 
-    printf ("\nO maior valor da lista e o %d.", maior);
-
-    return 0; 
+    printf("\nO maior item e de numero %d.", maior);    //imprimir o maior numero
 }
