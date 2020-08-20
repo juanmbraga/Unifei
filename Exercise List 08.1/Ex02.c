@@ -1,46 +1,51 @@
 /*
 2.Escreva  um  programa  que  preencha  uma  matriz  de  dimensão  N  
-(N  <=10  e  deve  ser  digitado pelo  usuário)  e  retorne  a  soma  dos  
-elementos  positivos  da  matriz. O  preenchimento  da  matriz deve ser feito 
-separado do cálculo da soma.
+(N  <=10  e  deve  ser  digitado pelo  usuário)  e  retorne  a  soma  
+dos  elementos  positivos  da  matriz. O  preenchimento  da  matriz 
+deve ser feito separado do cálculo da soma.
 */
 
-//preencher matriz de ate 10 linhas/colunas, e imprimir a soma dos elementos positivos.
-
+//receber matriz de dimensoes definidas pelo usuario (ate 10 linhas/colunas), e retornar soma dos positivos
 
 #include <stdio.h>
+#include <stdlib.h> //para system("cls")
 
 int main (void) {
 
-    int linha, coluna, soma=0;
+    int linha, coluna, somaPositiva=0;
 
-    printf("\nReveja os elementos de uma matriz 2x3 e saiba seu maior valor.\n");
+    system("cls");
+    printf("\nSaiba a soma dos elementos positivos de uma matriz de ate 10 linhas ou colunas.\n");
 
     do {
-        printf("\nPor favor, defina a quantidade de itens por linha (coluna): ");
+        printf("\nDigite a quantidade de itens por linha (coluna) e tecle enter: ");
         scanf("%d", &coluna);
-        printf("Agora, digite o numero de linhas: ");
+    }
+    while (coluna < 1 || coluna > 10);
+
+    do {
+        printf("Agora, insira a quantidade de linhas e tecle enter: ");
         scanf("%d", &linha);
     }
-    while (linha < 0 || linha > 10 ||coluna < 0 || coluna > 10);
+    while (linha < 1 || linha > 10);
 
-    int vetor[linha][coluna];
+    printf("\nSelecionada matriz %d x %d...\n\n", linha, coluna);
 
-    for (int i=0; i<linha; i++) {
+    int vetor[linha-1][coluna-1];
+
+    for (int i=0; i< linha; i++) {
         for (int j=0; j<coluna; j++) {
-            printf("\nInsira um valor para a casa (%d,%d): ", i+1, j+1);
+            printf("Insira o valor do item (%d,%d): ", i+1, j+1);
             scanf("%d", &vetor[i][j]);
         }
     }
 
-    for (int i=0; i<linha; i++) {
+    for (int i=0; i< linha; i++) {
         for (int j=0; j<coluna; j++) {
             if (vetor[i][j] > 0)
-                soma += vetor[i][j];
-        }    
+                somaPositiva += vetor[i][j];
+        }
     }
 
-    printf ("\nA soma dos valores positivos da lista e de %d.", soma);
-
-    return 0; 
+    printf("\nO valor da soma dos numeros positivos e de %d.", somaPositiva);
 }
