@@ -38,24 +38,24 @@ int main (void) {
     }
 
     //buscar maior elemento
+    int linhas[10];
     maiorElemento=matriz[0][0];
     for (int i=0; i<dimensao; i++) {
         for (int j=0; j<dimensao; j++) {
 
             if (matriz[i][j] > maiorElemento)
                 maiorElemento = matriz[i][j];
-
+            
         } 
     }
 
+
     //buscar repetições
-    
+    int linha[10];
     for (int i=0; i<dimensao; i++) {
         for (int j=0; j<dimensao; j++) {
 
             if (matriz[i][j] == maiorElemento)
-                repeticoes++;
-
 
         }
     }
