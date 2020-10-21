@@ -1,0 +1,6 @@
+cili 0 3 3
+cubo 1 10
+esfe 2 3
+cone 3 12 90
+para 4 4 477 333
+para 4 5 500 1000

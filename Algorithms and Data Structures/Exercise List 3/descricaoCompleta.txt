@@ -1,0 +1,59 @@
+Lista 03
+
+Resumo: 
+
+(a). Implementada + disponivel na main + descricao
+[apenas o codigo da (a.) pode ser executado diretamente, ainda e preciso adaptar a main para usar mais listas e re-adaptar algumas funcoes que recebem dados demais para receberem um struct aluno completo]
+
+(b). i. Implementada mais ou menos + descr (main nao adaptada)*
+    ii. Implementada + descr (main nao adaptada)*
+   iii. Implementada + descr (main nao adaptada)
+    iv. Implementado + descr (main nao adaptada)
+     v. Implementado + descr (main nao adaptada)
+
+____________________________________________________________
+a. Modificar para manipular um struct personalizado. 
+Passos:
+  1. Inserir a estrutura aluno e defini-la com typedef, assim como o tipo Lista (ponteiro para aluno)
+  2. Buscar todas as mencoes de "elemento*" e alterar as variaveis, preservando a logica
+  3. Definir os dados que precisarao de tratamento: "dado" da estrutura anterior e substituido por "nota", que sera usado para a ordenacao e busca (nas funcoes pre-existentes).
+  4. Definir funcoes que sao "sensiveis" a este dado: inserir, criar dado, remover do meio, buscar por posicao e um dado, e imprimir.
+  5. Para manter a TAD, nao permitir uso da struct na main, portanto criar variaveis para as informacoes (nome, matr. e nota). Note que seria bem mais conveniente criar uma struct.
+
+b. Devido a falta de tempo (o projeto acabou tomando mais tempo que imaginamos, e a lista se provou mais cheia de detalhesinhos que aparentou de inicio) nao foi possivel implementar a segunda parte da lista, mas uma vez garantida a presenca, tentarei descrever da maneira mais precisa que eu puder como seria a estrutura do codigo:
+  I. a. Adaptacoes
+      1. Fazer com que a funcao que cria lista possa ser usada mais de uma vez para criar multiplas listas.
+      2. Uma vez que a quantidade de listas nao e determinada (caso for apenas as tres seria mais simples, mas caso nao), deveria ter outra lista encadeada dinamica que pudesse conter quantas o usuario precisar.
+      3. E preciso pedir para o usuario em qual lista as insercoes/remocoes/buscas serao realizadas.
+    b. Implementacao (sempre fazer as checagens ao receber e criar)
+      1. o prototipo definiria que ela retorna um ponteiro para lista, e recebe duas listas (Lista*)
+      2. Uma terceira lista deveria ser alocada, assim como variaveis auxiliares para os nos das listas.
+      3. O funcionamento seria a partir de um loop while com a condicao: rodar enquanto (elemento atual de lista 1 nao for o ultimo OU elemento atual de lista 2 nao for o ultimo)
+      [lembrando que "ser o ultimo" quer dizer que aponta para NULL]
+      4. Dentro do loop, a funcao de inserir no final seria usada para inserir um item apos o outro de cada lista (em uma ordem qualquer escolhida), e depois as variaveis dos elementos atuais de cada lista seria atualizada para o proximo elemento.
+      5. O loop se encerrara quando um (ou ambos) os elementos atuais forem o(s) ultimo(s), e portanto o codigo de insercao deve ser feito mais uma vez fora do loop.
+      6. Uma vez atingido o fim de uma ou mais de uma das listas, bastaria criar uma condicao para continuar com o preenchimento. 
+        Um if para caso o atual da primeira lista nao ser o ultimo, um while deve ser rodado para que o restante da lista seja inserido no final da terceira lista. 
+        Um if para caso a segunda nao tenha atingido o fim, e usando um loop para colocar o restante.
+      7. Apos o controle passar por estas checagens, a lista tres estara pronta. Bastaria decidir se as duas anteriores seriam liberadas, e depois retornar a terceira lista.
+  II. Para esta situacao, dois loops poderiam ser utilizados. Um externo para percorrer item a item, e outro para comparar o item atual do externo com todos os itens. 
+      1. ...
+  III.A funcao de inserir no final da lista pode ser usada nesta situacao. 
+      1. Checar tudo ao receber
+      2. Limpar por completo a lista 2
+      3. criar um loop while com a condicao de rodar "enquanto o item atual nao for o ultimo", para os elementos da primeira lista
+      4. Dentro do loop que percorre a lista 1, a funcao de inserir no final da lista 2 poderia ser usada para convenientemente inverter a ordem da lista
+      5. Ja que o while nao executara uma ultima vez, e preciso executar a insercao no final novamente. 
+      6. Retornar a segunda lista 
+  IV. Bastaria um loop que percorresse a lista enquanto uma das condicoes aplicar, e depois checar se o fim foi atingido
+      1. checar os dados recebidos 
+      2. definir auxiliares para percorrer a lista
+      3. perguntar ao usuario se a ordem desejada para checagem e decrescente ou crescente (poderia ser passado por referencia tambem)
+      3. criar um loop que percorre a lista "enquanto a matricula atual for menor/maior que a anterior"
+      4. checar se o final foi atingido. Caso sim, a lista esta ordenada, caso nao, ela nao esta. 
+      5. Definir se uma saida por printf ao usuario seria o melhor, ou se retornar algo como "1" e "0" seria o mais util para qualquer aplicacao.
+  V.(aqui eu nao tenho tanta certeza)
+    a.checar dados recebidos (se lista existe e nao esta vazia)
+    b.Condicao de parada: que se atinja o ultimo elemento  (prox aponte p/ NULL)
+    c. codigo da condicao de parada: retornar 1
+    d. execucao normal: retorna a soma de (1 + chamada a si mesma) 
