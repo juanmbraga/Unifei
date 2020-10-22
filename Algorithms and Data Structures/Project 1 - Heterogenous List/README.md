@@ -1,4 +1,4 @@
-up# Homogeneous list of heterogeneous objects
+# Homogeneous list of heterogeneous objects
 #### September 21, 2020
 ## Short description
 Developed in the second semester after we had seen the fundamentals for, as well as some examples of, data structures. 
