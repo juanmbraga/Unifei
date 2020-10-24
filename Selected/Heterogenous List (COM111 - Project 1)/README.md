@@ -9,13 +9,13 @@ My group received the theme "Homogeneous list of Heterogeneous Objects", and aft
 
 ## The files
 * Code
-  * All the code for the main and the ADT is here. 
+  * All the code for the main function and the ADT is here. 
 * Modulo 07 - Trabalho Pratico 01 - Lista Heterogenea.pdf
   * The final document, with the description of concept and implementation. 
 * Modulo 07 - Trabalho Pratico 01 - Lista Heterogenea (Slides Introducao).pdf
   * The slides I made to help me illustrate the explanation during the video presentation (not uploaded here)
-* Modulo 07 - Trabalho Pratico 01 - Proposta
-  * The assignment document with all of the instructions
+* Proposta.md
+  * The instructions for the assignment
 * On the concept of Heterogeneous Lists.md
   * A short text in which I try to explain the concept in a calmer and concise way (the video presentation had a time limit)
 
