@@ -23,6 +23,3 @@ struct aluno{
 
 ## Referência
 Capítulo 5 do livro: BACKES, A. Estrutura de Dados Descomplicada em Linguagem C. 2016.
-
-## Nota
-Uma vez que eu 
