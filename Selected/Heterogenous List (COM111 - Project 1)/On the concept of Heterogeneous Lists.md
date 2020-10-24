@@ -35,4 +35,5 @@ But how the program will know the size and amount of data of each element to use
 
 The following image tries to illustrate a part of such list. 
 
-
+## Implementation
+(to-do)
