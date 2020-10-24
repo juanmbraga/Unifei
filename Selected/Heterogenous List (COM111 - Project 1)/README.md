@@ -28,7 +28,7 @@ Furthermore, one could point out a lack of standardization of the variable and f
 We also made a presentation, of which I was assigned the task of making an introduction as well as explaining the concept itself. The pdf with the presentation slides can be found on this folder by the name of **"Modulo 07 - Trabalho Pratico 01 - Lista Heterogenea (Slides Introducao).pdf"**. Since I have not asked the others for consent, I did not upload it. 
 
 ## On the concept of Heterogeneous Lists
-I had been very interested in ways of explaining concepts since the beginning of the year when I watched a few CS50 classes from Harvard University on EdX. I was fascinated by how David Malan cares about how people understand concepts (or at least that is what I presumed based on his excellent classes) and applies that awareness on his examples and practical situations. 
+I had been very interested in ways of explaining concepts since the beginning of the year when I watched a few CS50 classes from Harvard University on EdX. I was fascinated by how David Malan cares about the way people understand concepts (or at least that is what I presumed based on his excellent classes) and applies that awareness on his examples and practical situations. 
 
 After having found such a small amount of resources on this specific topic, other than a short pdf from Unicamp (University of Campinas), and gaining a little excitement by my professor's positive feedback on the project and a wish of re-making the video explanation with a better description of the supermarket example; after all that I decided to try and write about the subject in the clearest way I could. It is on the markdown file called **"On the concept of Heterogeneous Lists.md"**.
 
