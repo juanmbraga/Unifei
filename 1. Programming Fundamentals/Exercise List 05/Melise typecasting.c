@@ -1,3 +1,5 @@
+// Exemplo da professora Melise Maria Veiga de Paula
+
 #include <stdio.h>
 /*Em C, quando dividimos uma variável do tipo inteiro por outro inteiro como no exemplo abaixo (num/2), o resultado é a divisão inteiro de num por 2. Quando for necessário obter o resultado com casas decimais, temos que usar um recurso chamado typecasting. 
 O typecasting é usado para moldar um determinado valor, ou alterar o tipo de um determinado valor quando o programa estiver em execução. Como na linha 16 (resultado = (float) num/2;), o tipo da variável num é alterado para float antes de fazer a divisão. Mas esse tipo é alterado somente nessa linha, caso a variável num fosse usada novamente, seria considerada um valor inteiro.

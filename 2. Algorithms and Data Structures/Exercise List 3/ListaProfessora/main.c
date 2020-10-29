@@ -1,3 +1,5 @@
+// Criado pela professora Elisa de Cassia Silva Rodrigues
+// pode ser encontrado em https://github.com/elisa-rodrigues/COM111/tree/master/Lista%203
 
 // bibliotecas do sistema
 #include <stdio.h>

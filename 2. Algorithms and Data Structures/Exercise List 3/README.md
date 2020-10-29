@@ -21,5 +21,8 @@ struct aluno{
 4. Verifique se a lista está ordenada ou não (crescente ou decrescente), de acordo com a matrícula do aluno.
 5. Calcule e retorne o tamanho da lista dinâmica encadeada. A função deve ser recursiva.
 
+## Nota
+A pasta ListaProfessora contem o codigo elaborado pela professora Elisa de Cassia Silva Rodrigues, usando o material de referencia, que foi usado como base para o meu codigo. 
+
 ## Referência
 Capítulo 5 do livro: BACKES, A. Estrutura de Dados Descomplicada em Linguagem C. 2016.

@@ -10,7 +10,7 @@ concatena:
   .a funcao reordena os elementos para uma nova lista, o que inutiliza as anteriores. Possivelmente a professora quis que fizessemos uma copia dos elementos para preservar as outras duas
   .as opcoes de combinacao na implementacao da main ao abrangem todas as possibilidades
   .a maneira com que foram feitas as verificacoes poderia ser mais eficiente (ou a que esta agora e potencialmente errada)
-
+  .so depois que percebi que "concatenar" significa apenas juntar, e nao colocar de maneira alternada.
 remover repetidos:
   .usa a funcao de remover um item do meio da lista que ja estava implementada. Contudo, ela percorre toda a lista para procurar o item toda vez, o que e um problemitcho...
 

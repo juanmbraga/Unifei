@@ -5,5 +5,5 @@
 * [x] Juan
 * [x] Bruno
 * [ ] Antonio
-* [ ] Joao 
+* [x] Joao 
 * [ ] Raul

@@ -1,3 +1,5 @@
+// Exemplo da professora Melise Maria Veiga de Paula
+
 //switch-case
 #include <stdio.h>
 /* escreva um algoritmo que leia o valor do codigo de um funcionario e retorne a sua categoria seguindo a seguinte regra:
