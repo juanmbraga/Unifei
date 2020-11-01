@@ -13,9 +13,19 @@ int main(void) {
 
   // alocar dinamicamente
   char* inicio = (char*) malloc(sizeof(char)*400);
-  if(inicio==NULL) exit(1);
+  if(inicio==NULL) {
+    printf("Sem memoria! Tecle enter para continuar...");
+    getchar();
+    getchar();
+    return 0;
+  }
   char* final = (char*) malloc(sizeof(char)*2000);
-  if(final==NULL) exit(1);
+  if(final==NULL) {
+    printf("Sem memoria! Tecle enter para continuar...");
+    getchar();
+    getchar();
+    return 0;
+  }
 
   // info
   system("cls");
@@ -35,6 +45,9 @@ int main(void) {
     printf("\nErro de sintaxe ou de alocacao. Tecle enter para sair...");
     getchar();
     getchar();
+    free(inicio);
+    free(final);
+    free(criptografada);
     return 0;
   }
 
