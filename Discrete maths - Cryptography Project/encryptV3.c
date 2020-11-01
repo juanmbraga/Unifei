@@ -18,7 +18,7 @@ int main(void) {
   if(final==NULL) exit(1);
 
   // info
-  system("clear");
+  system("cls");
   printf("Criptografe uma mensagem!");
   printf("\npor Juan Marcos Braga Faria,");
   printf("\n1 de Novembro, 2020.");
@@ -51,6 +51,7 @@ int main(void) {
 
   free(inicio);
   free(final);
+  free(criptografada);
   
   return 0;
 }
