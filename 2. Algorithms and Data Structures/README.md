@@ -4,6 +4,6 @@
 * [x] Professora
 * [x] Juan
 * [x] Bruno
-* [ ] Antonio
+* [x] Antonio
 * [x] Joao 
-* [ ] Raul
+* [x] Raul
