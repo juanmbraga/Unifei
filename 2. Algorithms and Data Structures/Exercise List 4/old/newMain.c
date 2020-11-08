@@ -21,7 +21,7 @@ int main(void) {
       a maneira que eu estava fazendo anteriormente (filaXP, filaXC, ...) nao me permitia.
     */
 
-    int opcao, ok, dado, opcao2, estado = 0, contador[6], atendimentos[5] /*para coincidir com numeros*/;
+    int ok, tamanho, opcao, opcao2, estado = 0, contador[6], atendimentos[5] /*para coincidir com numeros*/, perfil;
     char opcao3;
 
     // verificar a inicializacao das filas
@@ -65,11 +65,11 @@ int main(void) {
             // receber a entrada de atendimentos do usuario
             do{
                 printf("\n Insira o limite de atendimentos do dia: ");
-                scanf("%d", &dado);
-            } while(dado < 1);
+                scanf("%d", &tamanho);
+            } while(tamanho < 1);
 
             // gerar uma fila de senhas com o numero atendimentos
-            ok = geraSenhas(fila[0], dado);
+            ok = geraSenhas(fila[0], tamanho);
 
             // verificar saida (como a alocacao da fila e entrada de atendimentos foi verificada, nao e preciso ver os retornos (1)(-1)(2))
             if(ok == 0){
@@ -100,6 +100,8 @@ int main(void) {
             // solicitar e armazenar todas as senhas de acordo com perfil dos clientes
             ok = retirarSenhas(fila, atendimentos);
 
+            estado == 2;
+
             // caso algum erro grave tenha acontecido, saia
             if(ok == -1){
                 printf("\n\nErro em passagem das filas. O programa sera encerrado...");
@@ -112,8 +114,55 @@ int main(void) {
 
         // chamar a proxima senha
         case 3:
+            
+            if(estado != 2){
+                printf("\nAs senhas ainda nao foram retiradas. Tecle ENTER para continuar...");
+                getchar();
+                getchar();
+                break;
+            }
+
+            for(int i=0; i < tamanho; i++){
+
+                // definir valor para chamada de perfil (0-> convencional, 1-> preferencial, 2-> pref.)
+                perfil = (perfil + 1) % 3;
+
+                
+            }
+
 
             //a fazer...
+
+            // verificar se senhas ja foram geradas e retiradas
+
+            // loop que repete seguindo o total de senhas inseridas:
+
+                // melhor denfinir preferencial ou convencional primeiro 
+                // duas chamadas preferenciais + 1 convencional:
+                // somar 1 ao numero, e salvar o resultado da divisao inteira (mais eficiente que usar um if para zerar toda vez)
+                // counter = (counter + 1) % 3
+                // (1, 2, 0, 1, 2, 0, 1, ...)
+                // iniciando em um, se counter for igual a zero, chama-se convencional, senao, chame preferencial
+
+                // definido o tipo de atendimento, comecar a checar as listas por disponibilidade de senhas
+
+                // chamada aleatoria dos tipos (negocial ou caixa): 
+                // gerar numero aleatorio e verificar o resultado de divisao inteira por dois. 
+                // se for 1 chame um deles, se for zero chame outro. 1= negocial 0=caixa
+
+                // verificacao (EXEMPLO): convencional (perfil definido) e negocial (tipo aleatorio)
+                // Fila "negocial convencional" possui elementos? se sim chame dai
+                // senao, veja se a fila "caixa convencional" possui senhas. Se sim chame dai
+                // senao, (produzir um aviso? e) veja o outro tipo (preferencial) no tipo sorteado (caixa), e caso tiver chame dai 
+                // senao, chame do ultimo remanescente (caixa preferencial)
+
+                // como chamar a senha: 
+                // usar funcao de consulta do inicio para imprimir
+                // desenfileirar (pensar em como usar o indice numerico para nao ficar enorme)
+                // reduzir um do numero de senhas restantes 
+                
+            // nao e preciso se preocupar com nenhuma das verificacoes resultarem em alguma chamada
+            // uma vez que o numero de senhas adicionadas definira as repeticoes do laco. 
 
         break;
 

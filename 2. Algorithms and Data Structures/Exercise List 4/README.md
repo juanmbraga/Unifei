@@ -32,7 +32,7 @@ senhas;
 1. Chamar aleatoriamente um tipo de atendendimento (Negocial ou Caixa);
 1. A cada 2 chamadas de perfil de cliente Preferencial, chamar um perfil de cliente Convencional.
 1. Imprimir a senha chamada.
-2. 
+
 (f) Encerrar o programa quando os n atendimentos diários forem realizados:
 
 1. Verificar se todas as filas de senha e atendimento estão vazias.

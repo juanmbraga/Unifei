@@ -9,19 +9,29 @@
 #define NC 4    //Negocio Convencional
 
 
+
 // disponibilizar "Fila" para uso na main
 typedef struct descritor Fila;
 
 
-///   Prototipos das funcoes   ///
 
-// insere o numero de senhas para o limite de atendimentos do dia
-int geraSenhas(Fila* fila, int atendimentos);
-//retornos: 1= nao existe; -1= nenhum atendimento; 2= fila de perfil errado; 0= sucesso
+///   Prototipos das funcoes principais   ///
 
 // cria fila generica para "senhas" (0) ou "filas" (1)
 Fila* criaFila(int tipo); 
 //retornos: NULL= erro ou tipo incorreto; !NULL= sucesso 
+
+// gera uma fila de senhas do tamanho recebido
+int geraSenhas(Fila* fila, int atendimentos);
+//retornos: 1= nao existe; -1= nenhum atendimento; 2= fila de perfil errado; 0= sucesso
+
+// Recebe vetor com filas, retira senhas e as insere noutras (atualizando o numero de atendimentos)
+int retirarSenhas(Fila* filas[], int atendimentos[]);
+//retornos: -1= filas nao existem; 0= sucesso
+
+
+
+///   Prototipos das funcoes secundarias   ///
 
 // libera as filas, os descritores e os dados
 int liberaFila(Fila* fila);   
@@ -48,9 +58,5 @@ int consultaInicio(Fila* fila);
 // imprime todos os valores presentes na fila
 void imprimirFila(Fila* fila);
 //sem retornos
-
-// Recebe vetor com filas, retira senhas e as insere noutras (atualizando o numero de atendimentos)
-int retirarSenhas(Fila* filas[], int atendimentos[]);
-//retornos: -1= filas nao existem; 0= sucesso
 
 //  padrao: variaveis comecam com minusculas, e tipos definidos com maiusculas
