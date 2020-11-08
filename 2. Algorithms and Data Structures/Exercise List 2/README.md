@@ -29,6 +29,6 @@ Escreva um programa principal main.c que use números complexos para testar as f
 implementadas na TAD. (*Sugestão: criar dois números complexos, executar todas as operações (+, -, *, /), imprimir os resultados e liberar a memória.*)
 
 ## Referência
-Capítulo 12 do livro: CELES, W.; CERQUEIRA, R.; RANGEL J. L. Introdução a Estruturas de
-Dados. 2a
-ed. 2016.
+Capítulo 12 do livro: CELES, W.; CERQUEIRA, R.; RANGEL J. L. Introdução a Estruturas de Dados. 2a ed. 2016.
+## Credito
+Exercicio da professora Elisa de Cassia Silva Rodrigues. 
