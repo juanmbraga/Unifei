@@ -1,4 +1,4 @@
-typedef struct descritor* Pilha;               
+typedef struct descritor Pilha;               
 
 
 // Funcao para criar uma pilha
@@ -7,15 +7,14 @@ Pilha* criarPilha();
 
 // Funcao para liberar um vetor de tres pilhas
 int liberarPilhas(Pilha* pilha[]);
-// retornos: 0= sucesso, 1= nao existe
 
 // Retorna o numero de elementos na pilha
-int tamanhoDaPilha(Pilha* pilha);
+int tamanhodaPilha(Pilha* pilha);
 //retornos: -1= nao existe, outros: tamanho
 
 // Funcao para inserir na pilha (sem checagem, apenas para o inicio)
 int empilhar(Pilha* pilha, char dado);
-//retornos: 0= sucesso, 1= fora de ordem, -1= nao existe
+//retornos: 0= sucesso, 1= fora de ordem, -1= nao existe ou erro ao alocar
 
 // Funcao para retirar o primeiro item da pilha
 char desempilhar(Pilha* pilha);

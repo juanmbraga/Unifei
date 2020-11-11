@@ -79,7 +79,7 @@ int main (void) {
 
         pausa();
 
-    } while(tamanhoDaPilha(pilha[2]) != 5 || retira != 33);
+    } while(tamanhodaPilha(pilha[2]) != 5 || retira != 33);
 
     if (retira != 33){
         system("clear");
