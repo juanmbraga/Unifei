@@ -4,12 +4,9 @@
 
 - Três tubos numerados de 1 a 3;
 - Cinco cubos, identificados pelas vogais do alfabeto (A, E, I, O e U).
-- Os tubos possuem uma abertura na parte inferior, por onde os cubos podem ser inseridos e
-removidos, apenas um por vez (ou seja, os cubos estarão empilhados dentro do tubo).
-- Inicialmente, os tubos 2 e 3 estão vazios e o tubo 1 contém todos os cubos em ordem alfabética,
-sendo que o último inserido foi o cubo com a letra A.
-- É necessário que os cubos sejam transferidos para o tubo 3 de forma que a ordem alfabética
-original seja sempre mantida (durante todo o processo de movimentação dos cubos).
+- Os tubos possuem uma abertura na parte inferior, por onde os cubos podem ser inseridos e removidos, apenas um por vez (ou seja, os cubos estarão empilhados dentro do tubo).
+- Inicialmente, os tubos 2 e 3 estão vazios e o tubo 1 contém todos os cubos em ordem alfabética, sendo que o último inserido foi o cubo com a letra A.
+- É necessário que os cubos sejam transferidos para o tubo 3 de forma que a ordem alfabética original seja sempre mantida (durante todo o processo de movimentação dos cubos).
 
 | Tubo 1 | Tubo 2 | Tubo 3|
 |:--------:|--------|-------|
