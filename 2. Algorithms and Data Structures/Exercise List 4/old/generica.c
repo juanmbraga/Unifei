@@ -1,9 +1,8 @@
 // Biblioteca de funcoes para manipulacao de tipo de dado:
-// Lista Encadeada Generica com No Descritor
+// Fila Encadeada Generica com No Descritor
 
 #include <stdio.h>
 #include <stdlib.h>
-#include "banco.h"
 
 typedef struct elemento {
     int tipo; 
@@ -16,30 +15,30 @@ typedef struct descritor {
     Elemento* inicio;
     Elemento* fim;
     int quantidade;
-} Lista;
+} Fila;
 
 
-Lista* criaLista(){
+Fila* criaFila(){
 
-    Lista* lista = (Lista*) malloc(sizeof(Lista));
+    Fila* fila = (Fila*) malloc(sizeof(Fila));
 
-    if(lista != NULL){
+    if(fila != NULL){
         
         // inicializa os dados do descritor 
-        lista->inicio = NULL;
-        lista->fim = NULL;
-        lista->quantidade = 0;
+        fila->inicio = NULL;
+        fila->fim = NULL;
+        fila->quantidade = 0;
 
     }
 
-    return lista;
+    return fila;
 }                        
 
 
-int liberaLista (Lista* lista){
+int liberaLista (Fila* fila){
 
     // caso ela estiver vazia
-    if(lista = NULL){
+    if(fila = NULL){
         return 1;
     }
 
@@ -48,9 +47,9 @@ int liberaLista (Lista* lista){
 
     // limpar item por item
     while(atual != NULL){
-        atual = lista->inicio;
-        lista->inicio = lista->inicio->prox;
-        lista->quantidade--;
+        atual = fila->inicio;
+        fila->inicio = fila->inicio->prox;
+        fila->quantidade--;
         
         // limpar o dado generico e o elemento
         free(atual->dado);
@@ -58,14 +57,14 @@ int liberaLista (Lista* lista){
     }
 
     // limpar o descritor
-    free(lista);
+    free(fila);
 
     return 0;
 }
 
 
 int tamanhoFila(Fila* fila){
-    // caso optar por nao conter o descritor ou a variavel quantidade nele, seria preciso percorrer a lista
+    // caso optar por nao conter o descritor ou a variavel quantidade nele, seria preciso percorrer a fila
 
     // caso a fila nao existir
     if(fila = NULL){
@@ -84,12 +83,12 @@ int desenfileirar(Fila* fila){
         return 1;
     }
 
-    // verifica se lista esta vazia
+    // verifica se fila esta vazia
     if(fila->inicio == NULL){
         return 2;
     }
 
-    // retira o primeiro elemento da lista
+    // retira o primeiro elemento da fila
     Elemento* no = NULL;
     no = fila->inicio;
     fila->inicio = fila->inicio->prox;
