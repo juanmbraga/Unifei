@@ -86,8 +86,8 @@ int empilhar(Pilha* pilha, char dado){
         return -1;
     }
 
-    // Verificar ordem alfabetica (A<E<I<O<U)
-    if(consultarTopoPilha(pilha) < dado){
+    // Verificar ordem alfabetica (A<E<I<O<U) caso nao for vazia
+    if(consultarTopoPilha(pilha) < dado && consultarTopoPilha(pilha) != 0){
         return 1;
     }
 
@@ -180,9 +180,10 @@ void imprimePilhas(Pilha* pilha[3]){
     Elemento* atual[3];
     char temp[3];
 
-    printf("\n\n     1    2    3\n");
+    printf("\n\n\t\t     1    2    3\n\n");
+    //printf("\t _    _    _ \n"); //tampa topo
 
-    // Salve os enderecos do inicio
+    // Salva os enderecos do inicio
     for(int i=0; i<3; i++){
         atual[i] = pilha[i]->topo;
     }
@@ -199,7 +200,7 @@ void imprimePilhas(Pilha* pilha[3]){
         }
 
         // Imprime os valores
-        printf("\t|%c|  |%c|  |%c|\n", temp[0], temp[1], temp[2]);
+        printf("\t\t    |%c|  |%c|  |%c|\n", temp[0], temp[1], temp[2]);
 
         // Busca o endereco das proximas "casas" da pilha
         for (int k=0; k<3; k++){
@@ -207,6 +208,8 @@ void imprimePilhas(Pilha* pilha[3]){
                 atual[k] = atual[k]->proximo;
         }
     }
+
+    //printf("\t| |  | |  | |\n");  //saida fundo
 
     // Alternativa seria uma sequencia de printfs com enderecos cada vez maiores, 
     // como pilha[i]->topo->proximo->proximo->proximo->proximo->dado
