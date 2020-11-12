@@ -180,8 +180,7 @@ void imprimePilhas(Pilha* pilha[3]){
     Elemento* atual[3];
     char temp[3];
 
-    printf("\n");
-    printf(" 1    2    3");
+    printf("\n\n     1    2    3\n");
 
     // Salve os enderecos do inicio
     for(int i=0; i<3; i++){
@@ -199,25 +198,13 @@ void imprimePilhas(Pilha* pilha[3]){
                 temp[j] = ' ';
         }
 
-        /* Anteriormente:
-        for(int j=0; j<3; j++){
-            temp[j] = atual[j]->dado;
-            // Em caso de fim da lista ter sido atingido, troque por espaco
-            if(temp[j] == 0) temp[j] = ' ';
-        }
-        */
-
         // Imprime os valores
-        printf("|%c|  |%c|  |%c|", temp[0], temp[1], temp[2]);
+        printf("\t|%c|  |%c|  |%c|\n", temp[0], temp[1], temp[2]);
 
         // Busca o endereco das proximas "casas" da pilha
-        for (int j=0; j<3; j++){
-            atual[j] = atual[j]->proximo;
-        }
-        
-        
-        for (int j=0; j<3; j++){
-            atual[j] = atual[j]->proximo;
+        for (int k=0; k<3; k++){
+            if(atual[k] != NULL)
+                atual[k] = atual[k]->proximo;
         }
     }
 
