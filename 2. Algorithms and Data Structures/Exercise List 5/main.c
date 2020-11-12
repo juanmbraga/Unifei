@@ -37,7 +37,7 @@ int main (void) {
         printf("\nTransfira todos os itens para a pilha 3...");
         printf("\n... Mas sem alterar a ordem alfabetica!");
 
-        imprimePilha(pilha);
+        imprimePilhas(pilha);
 
         printf("\n\nDe qual pilha gostaria de retirar um cubo? ");
         do{

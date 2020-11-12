@@ -19,7 +19,7 @@ int empilhar(Pilha* pilha, char dado);
 //retornos: 0= sucesso, 1= fora de ordem, -1= nao existe ou erro ao alocar
 
 // Funcao para retirar o primeiro item da pilha
-char desempilhar(Pilha* pilha);
+char desenpilhar(Pilha* pilha);
 //retornos: 0= vazia ou inexistente, !0= letra retirada (sucesso)
 
 // Consultar o primeiro item da pilha

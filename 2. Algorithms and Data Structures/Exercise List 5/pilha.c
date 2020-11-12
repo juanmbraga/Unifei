@@ -6,7 +6,7 @@
 // definicao do tipo elemento
 struct elemento{
     char dado;
-    Elemento *proximo;
+    struct elemento *proximo;
 };
 
 //typedef do elemento
@@ -44,7 +44,7 @@ int liberarPilhas(Pilha* pilha[3]){
             continue;
         }
 
-        int atual;
+        Elemento* atual;
 
         // Liberar todos os elementos
         while(pilha[i]->topo != NULL){
@@ -109,7 +109,7 @@ int empilhar(Pilha* pilha, char dado){
 }
 
 
-char desenpilhar(Pilha* pilha){
+char desempilhar(Pilha* pilha){
     // Checar existencia ou se pilha esta limpa
     if(pilha == NULL || pilha->quantidade == 0){
         return 0;
@@ -181,7 +181,7 @@ void imprimePilhas(Pilha* pilha[3]){
     char temp[3];
 
     printf("\n");
-    printf(" 1    2    3")
+    printf(" 1    2    3");
 
     // Salve os enderecos do inicio
     for(int i=0; i<3; i++){
