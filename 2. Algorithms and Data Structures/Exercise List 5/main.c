@@ -66,6 +66,10 @@ int main (void) {
             break;
 
             case 2: 
+                printf("\nA fila nao possui elementos! Tente novamente.");
+            break;
+
+            case 3: 
                 printf("\nMesma pilha selecionada! Tente novamente.");
             break;
 

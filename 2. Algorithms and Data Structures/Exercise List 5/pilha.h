@@ -1,3 +1,5 @@
+
+
 typedef struct descritor Pilha;               
 
 
@@ -12,7 +14,7 @@ int liberarPilhas(Pilha* pilha[]);
 int tamanhodaPilha(Pilha* pilha);
 //retornos: -1= nao existe, outros: tamanho
 
-// Funcao para inserir na pilha (sem checagem, apenas para o inicio)
+// Verifica ordem e insere na pilha
 int empilhar(Pilha* pilha, char dado);
 //retornos: 0= sucesso, 1= fora de ordem, -1= nao existe ou erro ao alocar
 
@@ -26,11 +28,11 @@ char consultarTopoPilha(Pilha* pilha);
 
 // Confere a ordem e tranfere letra de uma pilha para outra
 int transferir(Pilha* entrega, Pilha* recebe);
-//retornos: 0= sucesso, 1= fora de ordem, 2= mesma pilha, -1= nao existe
+//retornos: 0= sucesso, 1= fora de ordem, 2= fila entrega vazia, 3= mesma pilha, -1= nao existe ou erro
 //(nao e preciso checar se estiver cheia, uma vez que so existem cinco letras)
 
 // Imprime os elementos de tres pilhas da maneira pedida pelo exercicio
-void imprimePilhas(Pilha* pilha);
+void imprimePilhas(Pilha* pilha[]);
 
 // simplificar interacao
 void pausa();
