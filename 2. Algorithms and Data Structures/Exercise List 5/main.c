@@ -41,14 +41,14 @@ int main (void) {
 
         printf("\n\nDe qual pilha gostaria de retirar um cubo? ");
         do{
-            scanf("%d", retira);
+            scanf("%d", &retira);
         } while(retira < 1 && retira > 3);
 
         retira--;
 
         printf("\nPara qual pilha gostaria de transferi-lo?");
         do{
-            scanf("%d", recebe);
+            scanf("%d", &recebe);
         } while(recebe < 1 && recebe > 3);
 
         recebe--;

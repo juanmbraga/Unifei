@@ -193,10 +193,19 @@ void imprimePilhas(Pilha* pilha[3]){
         
         // Copiar os dados para veriaveis
         for(int j=0; j<3; j++){
+            if(atual[j] != NULL)
+                temp[j] = atual[j]->dado;
+            else 
+                temp[j] = ' ';
+        }
+
+        /* Anteriormente:
+        for(int j=0; j<3; j++){
             temp[j] = atual[j]->dado;
             // Em caso de fim da lista ter sido atingido, troque por espaco
             if(temp[j] == 0) temp[j] = ' ';
         }
+        */
 
         // Imprime os valores
         printf("|%c|  |%c|  |%c|", temp[0], temp[1], temp[2]);
@@ -205,7 +214,15 @@ void imprimePilhas(Pilha* pilha[3]){
         for (int j=0; j<3; j++){
             atual[j] = atual[j]->proximo;
         }
+        
+        
+        for (int j=0; j<3; j++){
+            atual[j] = atual[j]->proximo;
+        }
     }
+
+    // Alternativa seria uma sequencia de printfs com enderecos cada vez maiores, 
+    // como pilha[i]->topo->proximo->proximo->proximo->proximo->dado
 
     return;
 }
