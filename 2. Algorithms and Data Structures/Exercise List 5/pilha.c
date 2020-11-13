@@ -248,10 +248,10 @@ int imprimePilha(Elemento* pilha[3], int tamanho){
     // Copia os os dados da "casa" atual
     for(int i=0; i<3; i++){
         if(pilha[i] != NULL){
-                atual[i] = pilha[i]->dado;   // copie se existir
-                pilha[i] = pilha[i]->proximo;
-        }   else 
-                atual[i] = ' ';  // se nao tiver mais, coloque espaco
+            atual[i] = pilha[i]->dado;   // copie se existir
+            pilha[i] = pilha[i]->proximo;
+        }else 
+            atual[i] = ' ';  // se nao tiver mais, coloque espaco
     }
 
     imprimePilha(pilha, --tamanho);
