@@ -18,6 +18,7 @@ struct descritor{
     int quantidade;
 };
 
+int imprimePilha(Elemento* pilha[3], int tamanho);
 
 Pilha* criarPilha(void){
     // Alocar dinamicamente 
@@ -175,7 +176,7 @@ int transferir(Pilha* entrega, Pilha* recebe){
     return 0;
 }
 
-
+/*
 void imprimePilhas(Pilha* pilha[3]){
     Elemento* atual[3];
     char temp[3];
@@ -211,11 +212,55 @@ void imprimePilhas(Pilha* pilha[3]){
 
     //printf("\t| |  | |  | |\n");  //saida fundo
 
-    // Alternativa seria uma sequencia de printfs com enderecos cada vez maiores, 
-    // como pilha[i]->topo->proximo->proximo->proximo->proximo->dado
+    // Melhor que essa coisa feia enorme 
+    //pilha[i]->topo->proximo->proximo->proximo->proximo->dado
 
     return;
 }
+*/
+
+void imprimePilhas(Pilha* pilha[3]){
+    printf("\n\n\t\t     1    2    3\n\n");
+
+    Elemento* atual[3];
+
+    // Salva os enderecos do inicio
+    for(int i=0; i<3; i++){
+        atual[i] = pilha[i]->topo;
+    }
+
+    printf("\t\t     _    _    _ \n");
+
+    imprimePilha(atual, 5);
+
+    printf("\t\t    | |  | |  | |\n");  //saida fundo
+
+    return;
+}
+
+// Funcao de uso exclusivo por imprimePilhas
+int imprimePilha(Elemento* pilha[3], int tamanho){
+    // Parar ao atingir o fim da pilha
+    if(tamanho == 0) return 0;
+
+    char atual[3];
+
+    // Copia os os dados da "casa" atual
+    for(int i=0; i<3; i++){
+        if(pilha[i] != NULL){
+                atual[i] = pilha[i]->dado;   // copie se existir
+                pilha[i] = pilha[i]->proximo;
+        }   else 
+                atual[i] = ' ';  // se nao tiver mais, coloque espaco
+    }
+
+    imprimePilha(pilha, --tamanho);
+    // Imprime os valores atuais
+    printf("\t\t    |%c|  |%c|  |%c|\n", atual[0], atual[1], atual[2]);
+
+    return 0;
+}
+
 
 void pausa (){
     printf("\n\nTecle ENTER para continuar...");

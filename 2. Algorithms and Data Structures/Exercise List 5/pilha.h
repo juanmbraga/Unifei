@@ -32,8 +32,7 @@ int transferir(Pilha* entrega, Pilha* recebe);
 //(nao e preciso checar se estiver cheia, uma vez que so existem cinco letras)
 
 // Imprime os elementos de tres pilhas da maneira pedida pelo exercicio
-void imprimePilhas(Pilha* pilha[]);
+void imprimePilhas(Pilha* pilha[3]);
 
 // simplificar interacao
 void pausa();
-

@@ -32,7 +32,7 @@ int main (void) {
     empilhar(pilha[0], 'A');
 
     do{
-        system("clear");
+        system("cls");
         printf("\n   Pseudo-Torre-de-Hanoi com letras!");
         printf("\n\nTransfira todos os itens para a pilha 3...");
         printf("\n... mas sem alterar a ordem alfabetica!");
