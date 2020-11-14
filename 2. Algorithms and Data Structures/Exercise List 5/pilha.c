@@ -18,7 +18,7 @@ struct descritor{
     int quantidade;
 };
 
-int imprimePilha(Elemento* pilha[3], int tamanho);
+
 
 Pilha* criarPilha(void){
     // Alocar dinamicamente 
@@ -134,6 +134,7 @@ char desempilhar(Pilha* pilha){
 
 
 char consultarTopoPilha(Pilha* pilha){
+    // Caso nao existir ou for vazia
     if(pilha == NULL || pilha->topo == NULL){
         return 0;
     }
@@ -176,48 +177,6 @@ int transferir(Pilha* entrega, Pilha* recebe){
     return 0;
 }
 
-/*
-void imprimePilhas(Pilha* pilha[3]){
-    Elemento* atual[3];
-    char temp[3];
-
-    printf("\n\n\t\t     1    2    3\n\n");
-    //printf("\t _    _    _ \n"); //tampa topo
-
-    // Salva os enderecos do inicio
-    for(int i=0; i<3; i++){
-        atual[i] = pilha[i]->topo;
-    }
-
-    // Repetir por todas as cinco casas das pilhas
-    for(int i=0; i<5; i++){ 
-        
-        // Copiar os dados para veriaveis
-        for(int j=0; j<3; j++){
-            if(atual[j] != NULL)
-                temp[j] = atual[j]->dado;
-            else 
-                temp[j] = ' ';
-        }
-
-        // Imprime os valores
-        printf("\t\t    |%c|  |%c|  |%c|\n", temp[0], temp[1], temp[2]);
-
-        // Busca o endereco das proximas "casas" da pilha
-        for (int k=0; k<3; k++){
-            if(atual[k] != NULL)
-                atual[k] = atual[k]->proximo;
-        }
-    }
-
-    //printf("\t| |  | |  | |\n");  //saida fundo
-
-    // Melhor que essa coisa feia enorme 
-    //pilha[i]->topo->proximo->proximo->proximo->proximo->dado
-
-    return;
-}
-*/
 
 void imprimePilhas(Pilha* pilha[3]){
     printf("\n\n\t\t     1    2    3\n\n");
@@ -231,15 +190,18 @@ void imprimePilhas(Pilha* pilha[3]){
 
     printf("\t\t     _    _    _ \n");
 
-    imprimePilha(atual, 5);
+    // Imprime os elementos da pilha recursivamente 
+    imprimePilhaRecursiva(atual, 5);
+    /*NOTA: O "erro" poderia ser resolvido colocando a funcao "imprimePilhaRecursiva()" antes desta, pois esta invoca aquela. Contudo, desta maneira faz mais sentido para a leitura do codigo, e o funcionamento nao e prejudicado.*/
 
-    printf("\t\t    | |  | |  | |\n");  //saida fundo
+    printf("\t\t    | |  | |  | |\n");  //saida fundo (com barra e contra barra ficou feio)
 
     return;
 }
 
+
 // Funcao de uso exclusivo por imprimePilhas
-int imprimePilha(Elemento* pilha[3], int tamanho){
+int imprimePilhaRecursiva(Elemento* pilha[3], int tamanho){
     // Parar ao atingir o fim da pilha
     if(tamanho == 0) return 0;
 
@@ -254,7 +216,8 @@ int imprimePilha(Elemento* pilha[3], int tamanho){
             atual[i] = ' ';  // se nao tiver mais, coloque espaco
     }
 
-    imprimePilha(pilha, --tamanho);
+    imprimePilhaRecursiva(pilha, --tamanho);
+    
     // Imprime os valores atuais
     printf("\t\t    |%c|  |%c|  |%c|\n", atual[0], atual[1], atual[2]);
 
