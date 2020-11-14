@@ -25,3 +25,9 @@ origem e o tubo de destino do cubo.
 - A cada movimentação de cubo, imprima as três pilhas que representam os tubos.
 - 
 *Dica: utilize a ideia do algoritmo da Torre de Hanoi.*
+
+## Credito
+
+Exercicio passado pela professora [Elisa de Cassia Silva Rodrigues](https://github.com/elisa-rodrigues).
+
+Agradecimento pela ajuda do monitor [Ricardo Dalarme](https://github.com/ricardodalarme) na parte de impressao recursiva.

@@ -37,3 +37,9 @@ senhas;
 
 1. Verificar se todas as filas de senha e atendimento estão vazias.
 2. Imprimir o número de atendimentos realizados por cada uma das mesas (Negocial ou Caixa).
+
+
+## Credito
+Exercicio passado pela professora [Elisa de Cassia Silva Rodrigues](https://github.com/elisa-rodrigues).
+
+Codigo novo (como new-main.c) feito em colaboracao com o colega Flávio Augusto Aló Torres.

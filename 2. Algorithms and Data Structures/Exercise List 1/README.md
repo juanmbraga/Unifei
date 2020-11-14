@@ -35,4 +35,4 @@ Escreva um programa que leia o número *n* de alunos a serem cadastrados. Em seg
 (e) Imprimir o registro de um aluno
 
 ## Credito
-Exercicio da professora Elisa de Cassia Silva Rodrigues.
+Exercicio da professora [Elisa de Cassia Silva Rodrigues](https://github.com/elisa-rodrigues).

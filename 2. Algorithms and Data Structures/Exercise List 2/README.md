@@ -31,4 +31,4 @@ implementadas na TAD. (*Sugestão: criar dois números complexos, executar todas
 ## Referência
 Capítulo 12 do livro: CELES, W.; CERQUEIRA, R.; RANGEL J. L. Introdução a Estruturas de Dados. 2a ed. 2016.
 ## Credito
-Exercicio da professora Elisa de Cassia Silva Rodrigues. 
+Exercicio passado pela professora [Elisa de Cassia Silva Rodrigues](https://github.com/elisa-rodrigues) usando o material de referencia. 

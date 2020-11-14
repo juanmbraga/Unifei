@@ -3,7 +3,8 @@
 
 #include "pilha.h"
 
-
+// Caso bater a preguica...
+// http://www.shurdington.org/Downloads/TowerOfHanoi5answer.pdf
 int main (void) {
 
     Pilha* pilha[3];
@@ -32,7 +33,7 @@ int main (void) {
     empilhar(pilha[0], 'A');
 
     do{
-        system("cls");
+        system("clear");
         printf("\n   Pseudo-Torre-de-Hanoi com letras!");
         printf("\n\nTransfira todos os itens para a pilha 3...");
         printf("\n... mas sem alterar a ordem alfabetica!");

@@ -25,4 +25,4 @@ struct aluno{
 Capítulo 5 do livro: BACKES, A. Estrutura de Dados Descomplicada em Linguagem C. 2016.
 
 ## Credito
-Exercicio passado pela professora Elisa de Cassia Silva Rodrigues. O codigo de referencia na pasta "listaProfessora" tambem foi passado por ela usando o material de referencia.
+Exercicio passado pela professora [Elisa de Cassia Silva Rodrigues](https://github.com/elisa-rodrigues) usando o material de referencia.
