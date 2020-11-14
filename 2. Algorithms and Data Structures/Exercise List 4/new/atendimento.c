@@ -1,7 +1,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <time.h>
-#include "filaEncadeada.h"
+#include "atendimento.h"
 
 //criando elemento
 struct elemento{
@@ -143,4 +143,42 @@ int tamanho_fila(Fila *fi)
         return -1;
     }
     return fi->quant;
+}
+
+
+
+void imprimirFila(Fila* fila){
+
+    // verifica se fila existe
+    if(fila == NULL){
+        printf("\n\nFila nao existe! Tecle enter para continuar...");
+        getchar();
+        getchar();
+        return;
+    }
+
+    // verifica se a lista esta vazia
+    if(fila->quant == 0){
+        printf("\n\nA fila esta vazia! Tecle enter para continuar...");
+        getchar();
+        getchar();
+        return;   //dispensa o uso de else
+    }
+
+    // imprimir as senhas uma a uma
+    Elemento* atual = fila->inicio;
+
+    printf("\n\nFila de senhas:\n");
+    while(atual != NULL){
+        
+      //  printf("\n%c%c%d", fila->perfil[0], fila->perfil[1], atual->dado);
+        
+        atual = atual->prox;
+    }
+
+    printf("\n\nFim da fila. Tecle enter para continuar...");
+    getchar();
+    getchar();
+        
+    return;
 }

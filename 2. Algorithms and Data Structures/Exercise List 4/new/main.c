@@ -1,7 +1,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <time.h>//necessário para chamar aleatoriamente as senhas
-#include "filaEncadeada.h"
+#include "atendimento.h"
 
 int main(void) {
 

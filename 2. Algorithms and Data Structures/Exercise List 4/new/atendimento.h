@@ -18,4 +18,8 @@ int desenfileirar(Fila *fi);
 // função para consultar elemento no início da fila
 int consultar_inicio_fila(Fila *fi, int *dado); 
 
+// imprime todos os valores presentes na fila
+void imprimirFila(Fila* fila);
+//sem retornos
+
 #endif 
