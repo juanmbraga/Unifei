@@ -1,8 +1,7 @@
 # Proposta do trabalho 
 ## Introdução 
 Este documento descreve as características do trabalho prático da disciplina. O trabalho consiste na implementação de um Tipo Abstrato de Dados (TAD) ou na solução de algum problema proposto
-utilizando a linguagem C, conforme Anexo A (Temas). O tema do trabalho de cada grupo será sorteado
-pelo professor.
+utilizando a linguagem C, conforme Anexo A (Temas). O tema do trabalho de cada grupo será sorteado pelo professor.
 ## Metodologia
 * Cabe ao grupo pesquisar a literatura, entender o conceito e codificar.
   * Existe na literatura diversas implementações para todos os tópicos, os quais podem ser utilizados, desde que referenciados corretamente. Eventuais adaptações e correções no código serão avaliados neste trabalho. Isso quer dizer que vocês podem utilizar outros códigos como referência, mas obviamente não como cópia!
@@ -50,3 +49,6 @@ pelo professor.
 10. PROBLEMA DE LABIRINTO (usando recursão).
 11. JOGO DE 21 (usando lista encadeada).
 12. PROBLEMA DE BIN PACKING UNIDIMENSIONAL (usando lista encadeada).
+
+## Credito
+Projeto passado pela professora [Elisa de Cassia Silva Rodrigues](https://github.com/elisa-rodrigues).

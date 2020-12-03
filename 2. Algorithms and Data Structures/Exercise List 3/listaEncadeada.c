@@ -30,7 +30,7 @@ Lista* criar_lista()
 // função para liberar memória
 int liberar_lista(Lista *li)
 {
-  if(li == NULL){    
+  if(li == NULL){
     return 0;
   }
 
