@@ -12,8 +12,6 @@ My group received the theme "Homogeneous list of Heterogeneous Objects", and aft
   * All the code for the main function and the ADT is here. 
 * Modulo 07 - Trabalho Pratico 01 - Lista Heterogenea.pdf
   * The final document, with the description of concept and implementation. 
-* Modulo 07 - Trabalho Pratico 01 - Lista Heterogenea (Slides Introducao).pdf
-  * The slides I made to help me illustrate the explanation during the video presentation (not uploaded here)
 * Proposta.md
   * The instructions for the assignment
 * On the concept of Heterogeneous Lists.md
@@ -25,7 +23,7 @@ The code was made based on the teacher's already available implementation of a s
 
 Furthermore, one could point out a lack of standardization of the variable and function names, which does give me some _itches_ (specially variable names with single or two letters, and functions with multiple structures, such as openFolder, open_folder, and openfolder). The project could have used some more planning at the beginning and could progress more organically if the code were made from the ground up. 
 
-We also made a presentation, and I was assigned the task of making an introduction as well as explaining the concept itself. The pdf with the presentation slides can be found on this folder by the name of **"Modulo 07 - Trabalho Pratico 01 - Lista Heterogenea (Slides Introducao).pdf"**. Since I have not asked the others for consent for it specifically, I did not upload the video. 
+We also made a presentation, and I was assigned the task of making an introduction as well as explaining the concept itself. Since I have not asked the others for consent for it specifically, I did not upload the video. 
 
 ## On the concept of Heterogeneous Lists
 I had been very interested in ways of explaining concepts since the beginning of the year when I watched a few CS50 classes from Harvard University on EdX. I was fascinated by how David Malan cares about the way people understand concepts (or at least that is what I presumed based on his excellent classes) and applies that awareness on his examples and practical situations. 
