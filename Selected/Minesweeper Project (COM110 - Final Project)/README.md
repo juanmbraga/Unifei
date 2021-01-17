@@ -1,6 +1,6 @@
 # Minesweeper
 
-#### July 7, 2020.
+#### July 7, 2020
 
 ## Description
 A simple Minesweper game written in C and given as the final assignment for the introductory subject on programming.
