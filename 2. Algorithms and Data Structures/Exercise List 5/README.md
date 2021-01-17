@@ -20,14 +20,13 @@
 
 - Utilize as funções **empilhar()** e **desempilhar()** da TAD Pilha Dinâmica (link para codigo da prof), para transferir um cubo de um tubo para outro;
 - Durante o processo todos os tubos podem ser utilizados para armazenamento auxiliar dos cubos.
-- O programa deve ser interativo, ou seja, a cada movimentação o usuário deve escolher o tubo de
-origem e o tubo de destino do cubo.
+- O programa deve ser interativo, ou seja, a cada movimentação o usuário deve escolher o tubo de origem e o tubo de destino do cubo.
 - A cada movimentação de cubo, imprima as três pilhas que representam os tubos.
 - 
 *Dica: utilize a ideia do algoritmo da Torre de Hanoi.*
 
-## Credito
+## Crédito
 
 Exercicio passado pela professora [Elisa de Cassia Silva Rodrigues](https://github.com/elisa-rodrigues).
 
-Agradecimento pela ajuda do monitor [Ricardo Dalarme](https://github.com/ricardodalarme) na parte de impressao recursiva.
+Agradecimento pela ajuda do monitor [Ricardo Dalarme](https://github.com/ricardodalarme) na parte de impressão recursiva.

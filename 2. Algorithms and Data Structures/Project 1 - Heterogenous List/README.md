@@ -3,7 +3,7 @@
 ## Short description
 Developed in the second semester after we had seen the fundamentals for, as well as some examples of, data structures. 
 
-It was meant for the students to look up on the literature and internet about the concept that was assigned to them (list can be found in the pdf **"Modulo 07 - Trabalho Pratico 01 - Proposta.pdf"**, in Portuguese).
+It was meant for the students to look up on the literature and internet about the concept that was assigned to them (list can be found in the pdf **"Modulo 07 - Trabalho Pratico 01 - Proposta.md"**, in Portuguese).
 
 My group received the theme "Homogeneous list of Heterogeneous Objects", and after some deliberation on the difficulties of the concept (or rather, the amount of time that the ADT - Abstract Data Type, would take) we decided to make a simple list that contained the data of different geometric shapes, and calculated their volume. 
 
