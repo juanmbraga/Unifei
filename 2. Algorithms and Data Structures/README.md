@@ -15,7 +15,7 @@ Self explanatory. Lists that were given each week when a new data structure was 
 ## Projects
 Projects (oh really!?) in which we had to code for a situation (of our choice) for which the previously defined data structure would be relevant to. Although it wasn't absolutely necessary for the example to perfectly fit the structure (the focus was the document that had to contain what we learned on the subject and the structure).
 
-(See The Heterogeneous list project on the Selected folder for an "inspired" text on the subject haha)
+(See The Heterogeneous list project on the Selected folder for an "inspired" - yet unfinished - text on the subject haha)
 
 # A few notes  
 - **Learned to not spam github with commits** - It was by the end of the semester that I started to realize that I was issuing a number of commits in github that was too high (realization also reinforced by some videos I would later watch). Since then I am commited to trying to reduce this number to a minimum.
